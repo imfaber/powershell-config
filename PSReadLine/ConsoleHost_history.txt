@@ -1,0 +1,3518 @@
+winget
+winget lits
+winget list
+winget list -h
+winget search chrome
+winget install Google Chrome
+winget install Google.Chrome
+winget help
+winget search vs code
+winget search vscode
+winget search slack
+winget install Microsoft.VisualStudioCode SlackTechnologies.Slack
+winget search rider
+winget install JetBrains.Rider
+winget install "VS CODE"
+winget install "vs code"
+winget install ohmyposh
+winget install "google chrome"
+winget install "posh"
+winget search "posh"
+winget search powershell
+winget install "Microsoft.PowerShell"
+winget search "my posh"
+winget search "posh"
+winget install "JanDeDobbeleer.OhMyPosh"
+oh-my-posh font install
+oh-my-posh get shell
+New-Item -Path $PROFILE -Type File -Force
+oh-my-posh init pwsh | Invoke-Expression
+code $PROFILE
+ll
+cd .\Desktop\
+ll
+winget search ".net"
+winget install Microsoft.DotNet.SDK.8
+dotnet
+dotnet info
+winget search "nvm"
+winget install CoreyButler.NVMforWindows
+nvm
+nvm list
+nvm
+nvm install 18.20.4
+nvm use 18.20.4
+node -v
+winget search "github"
+winget install GitHub.GitHubDesktop
+npm install -g vsts-npm-auth --registry https://registry.npmjs.com --always-auth false
+vsts-npm-auth -config .npmrc
+wsl
+wsl --list --online
+wsl --install -d Ubuntu
+winget search "storage explorer"
+winget search "azure cli"
+winget search "postmanb"
+winget search "postman"
+winget search "whatshapp"
+winget search "whatsapp"
+winget install Microsoft.AzureCLI Microsoft.AzureCLI 9NKSQGP7F2NH Postman.Postman
+winget install Microsoft.AzureCLI Microsoft.AzureCLI Postman.Postman
+az login
+winget search "storage explorer"
+winget install Microsoft.Azure.StorageExplorer
+ll
+mkdir dev
+cd .\dev\
+git clone git@github.com:TheSustainables/EnergyShop.HomeQgo-v2.git
+winget search "git"
+winget install Git.Git
+wsl --set-default-version 2
+wsl
+wsl.exe --list --online
+wsl.exe -v
+wsl.exe --list --online
+wsl.exe --installUbuntu
+wsl.exe --install Ubuntu
+ll
+git clone git@github.com:TheSustainables/EnergyShop.HomeQgo-v2.git
+cd .\dev\
+git clone git@github.com:TheSustainables/EnergyShop.HomeQgo-v2.git
+git clone git@github.com:TheSustainables/Infrastructure.git
+winget search "docker"
+winget install Docker.DockerDesktop
+cd dev
+git clone git@github.com:TheSustainables/Infrastructure.git
+ll
+cd .\Infrastructure\
+ll
+cd .\localDev\
+ll
+winget install Docker.DockerCompose
+docker-compose up
+cd .\dev\Infrastructure\localDev\
+docker-compose up
+cd .\dev\Infrastructure\localDev\
+docker-compose up
+oh-my-posh font install
+cd .\dev\Infrastructure\localDev\
+docker-compose up
+winget search "sql server management studio"
+winget install Microsoft.SQLServerManagementStudio
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+vsts-npm-auth -config .npmrc
+cd ..
+dotnet run
+dotnet restore --interactive
+az login
+dotnet restore --interactive
+winget search ".NET Core SDK"
+dotnet info
+winget search ".NET SDK"
+winget install Microsoft.DotNet.SDK.8
+dotnet info
+dotnet
+dotnet --info
+cd .\dev\EnergyShop.HomeQgo-v2\
+dotnet restore --interactive
+az login
+dotnet restore --interactive
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm i
+node -v
+npm run dev
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+code .
+cd ..
+az login
+dotnet restore --interactive
+winget list
+az account 
+az account  list
+cd %AppData%\Roaming\NuGet
+cd $AppData
+start .
+start
+cd .\AppData\
+ll
+start .
+dotnet restore --interactive
+cd ..\Downloads\
+ll
+.\installcredprovider.ps1
+iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) }"
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+dotnet restore --interactive
+cd ..
+dotnet restore --interactive
+cd .\ClientApp\
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api
+dnr
+ll
+cd .\Documents\
+ll
+cd Pw
+cd .\PowerShell\
+ll
+code $PROFILE
+ll
+cd .\Documents\
+ll
+cd .\PowerShell\
+ll
+code $PROFILE
+code .
+clear
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd .\dev\EnergyShop.HomeQgo-v2\
+ll
+cd %AppData
+cd %AppData%
+dir env:
+cd $APPDATA
+cd .\AppData\
+ll
+start
+\
+clear
+touch test
+mkdir a
+g s
+npm install -g gbunny
+clear
+cd ..
+cd dev
+cd .\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm test
+ll
+clear
+npm run dev
+xows .
+code .
+clear
+cd ll
+cd ..
+cd .\ClientApp\
+clear
+npm run lint:fix
+npm test
+npx jest -- --watch --coverage=false components/traffic-partner/engie/EngieFulfillmentPartnerContact.spec.ts
+npx jest -- --watch-all --coverage=false components/traffic-partner/engie/EngieFulfillmentPartnerContact.spec.ts
+npx jest --watch --coverage=false components/traffic-partner/engie/EngieFulfillmentPartnerContact.spec.ts
+npm test
+g cob hotfix/engie-contact-form 3b0f106ada28f57e499f931eb6762cd44b8707ec
+g lg
+g cherry-pick 704e4efd4611f69d0f5aff1a223711c0c2a07460
+npm test
+npm run lint:fix
+npm run dev
+npm test
+code $PROFILE
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+clear
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd /
+cd '.\$Recycle.Bin\'
+cd .\S-1-5-18\
+ll
+cd /
+ll
+cd '.\Program Files\'
+ll
+cd .\Docker\
+ll
+cd .\Docker\
+ll
+cd .\frontend\
+g com
+g m hotfix/engie-contact-form
+npm run dev
+g com
+g co hotfix/engie-contact-form 
+npm run dev
+clear
+winget search "libre office"
+g com
+g pl
+cd .\dev\EventReportingService\
+g s
+g stash
+g stash pop
+g stash -h
+g stash clear
+ll
+dotnet restore --interactive
+g com
+git reset --hard origin/master
+dotnet restore --interactive
+cd ..
+cd .
+cd ..
+dotnet restore --interactive\
+dotnet restore --interactive
+g stash
+g stash -h
+g stash show
+g stash apply
+g d
+g rsh
+g stash clear
+g com
+dotnet restore --interactive
+cd .\Api\ClientApp\
+npm run dtsgen
+npx playwright install
+.\bin\ngrok\ngrok.exe http https://localhost:5052
+cd .\bin\ngrok\
+ngrok http https://localhost:5052
+.\ngrok.exe http https://localhost:5052
+.\ngrok.exe
+.\ngrok.exe http https://localhost 
+.\ngrok.exe http https://localhost:5052
+cd dev
+ll
+g clone git@github.com:TheSustainables/CustomerPortal-v2.git
+cd .\CustomerPortal-v2\
+ll
+cd .\TheSustainables.CustomerPortal\
+cd .\ClientApp\
+npm i
+cd .\dev\CustomerPortal-v2\
+dotnet restore --interactive
+dnr
+cd .\TheSustainables.CustomerPortal\
+dnr
+npm run dev
+dnr
+npm test
+npm run lint:fix
+cd .\dev\
+g clone git@github.com:TheSustainables/QuoteCreator.git
+start .
+cd .\QuoteCreator\
+cd .\src\
+dotnet restore --interactive
+g co feature/ab#12992-implement-qui
+g com
+g co feat/ab#13001-remove-recurring-leads-scan-start
+npm run dev
+cd ../..
+dotnet restore --interactive
+ll
+cd .\QuoteCreator.Web\
+ll
+cd .\npm_packages\
+ll
+npm run
+npm run build
+npm run buildcss
+npm i
+npm run buildcss
+ll
+ll .\node_modules\
+npm run buildcss
+npm i -d replace-in-file-webpack-plugin
+npm i -D replace-in-file-webpack-plugin
+npm run buildcss
+ll
+code ../wwwroot/css/app.css
+ll 
+ll ../wwwroot/css/
+npx tailwindcss init
+npm run buildcss
+npx tailwindcss -i ../\wwwroot/css/app.css -o ../wwwroot/css/app.min.css --watch
+npx tailwindcss -i ../wwwroot/css/app.css -o ../wwwroot/css/app.min.css --watch
+npx tailwindcss -i ../wwwroot/css/app.css -o ../wwwroot/css/app.min.css
+npm i
+g rsh
+g clean -df
+g pl
+g stash clear
+dotnet restore --interactive
+npm i
+cd ..
+dotnet restore --interactive
+cd .\npm_packages\
+cd ..
+ll
+dotnet restore --interactive
+cd .\QuoteCreator.Web\npm_packages\
+g s
+g rsh
+npm i
+npx tailwindcss -i ../wwwroot/css/app.css -o ../wwwroot/css/app.min.css
+ll ../wwwroot/css/
+npm run buildcss
+npm run build
+g pl
+cd .\dev\
+g clone git@github.com:imfaber/imfaber-v4.git
+cd .\imfaber-v4\
+code .
+winget install Hugo.Hugo.Extended
+hugo
+cd .\dev\imfaber-v4\
+hugo server
+g pl
+ll ../..
+ll ../../../
+npm i
+npm run watch-css
+npm run build-css
+npm run watch-css
+cd .\dev\QuoteCreator\src\
+ll
+cd .\QuoteCreator.Web\
+dnw
+npm run watch-css
+cd dev
+g clone git@github.com:TheSustainables/QUI.git
+cd .\QUI\
+pnpm install
+winget search "pnpm"
+winget install pnpm.pnpm 
+pnpm install
+cd .\dev\QUI\
+pnpm install
+pnpm run storybook
+cd .\dev\QUI\
+pnpm run storybook
+code .
+npm run watch-css
+code .\npm_packages\node_modules\
+code .\npm_packages\node_modules\
+npm i typescript
+npm uninstall typescript
+npm run watch-css
+g com
+g pl
+g co feature/ab#12992/errors
+g cob feature/ab#12992/errors
+npm run watch-css
+npm run build
+npm run build-css
+npm run build-watch
+npm run watch-css
+npm run build-watch
+npm run build-css
+npm run watch-css
+cd ../..
+cd ..
+cd .\src\QuoteCreator.Web\npm_packages\
+start C:\Windows\System32\drivers\etc
+cd C:\Windows\System32\drivers\etc
+ll
+notepad
+notepad .\hosts
+winget search "powershell"
+winget -h
+winget upgrade
+winget upgrade -h
+winget upgrade all
+winget upgrade
+winget upgrade Microsoft.PowerShell 
+winget upgrade
+winget upgrade --all
+winget upgrade --all --silent`
+
+winget upgrade
+winget upgrade --all --silent`
+
+winget upgrade
+winget upgrade --all --silent`
+
+winget upgrade
+curl -sSL https://get.wasp-lang.dev/installer.sh | sh
+winget search "beekeeper studio"
+winget install beekeeper-studio.beekeeper-studio
+winget uninstall beekeeper-studio.beekeeper-studio
+ll
+cd .\Documents\
+cd .\Documents\
+ll
+start .
+cd .\PowerShell\
+ll
+code .
+winget upgrade JanDeDobbeleer.OhMyPosh -s winget
+cd dev
+ll
+npm create astro@latest
+cd .\fabriziomeinero.com\
+astro add
+cd .\dev\fabriziomeinero.com\
+astro add
+npx astro add react tailwind mdx
+npm run dev
+code .
+npm run dev
+npm install -D @tailwindcss/typography
+npm run dev
+cd .\dev\
+g clone git@github.com:withastro/astro.git
+start .
+start .\astro\
+npm run dev
+npx magicui-cli init`
+
+npm run dev
+npx astro add sitemap
+npm run dev
+npx astro add sitemap
+npm run dev
+cd .\dev\
+ll
+cd .\QuoteCreator\
+g com
+g pl
+g co feature/ab#12988-show-list-of-quotes
+ll
+cd .\src\
+dotnet restore --interactive
+cd .\dev\QUI\
+g pl
+code .
+code .\QuoteCreator.Web\npm_packages\
+g rsh
+g pl
+g stash
+g stash pop
+g rsh
+g stash pop
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+g pl
+npm run dev
+az login
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+code .
+g co v
+g co hotfix/engie-contact-form
+npm run dev
+g pl\
+g pl
+cd .\EventReportingService\
+code .
+code ..
+g com
+g pl
+g cob feature/ab#12996/auth
+g com
+g cob feature/ab#12988/disable-prerendering
+g stash
+g stash pop
+cd .\QuoteCreator.Web\npm_packages\
+npm run watch-css
+g co feature/ab#12996/auth
+pwd
+g s
+cd ..
+dotnet add package Azure.Identity --version 1.12.0
+dotnet add package Azure.Identity
+az login
+dotnet add package Azure.Identity
+dotnet add package Azure.Identitydotnet add package Microsoft.AspNetCore.Authentication.OpenIdConnect
+dotnet add package Microsoft.AspNetCore.Authentication.OpenIdConnect
+dotnet add package Identity.Web
+dotnet add package Identity.Web.UI
+dotnet add package Microsoft.Identity.Web
+dotnet add package Microsoft.Identity.Web.UI
+g pl
+npm run build-css
+cd .\npm_packages\
+npm run build-css
+npm run watch-css
+winget search "terraform"
+winget install Hashicorp.Terraform --silent
+terraform -v
+cd .\dev\QuoteCreator\
+ll
+cd .\infra\
+ll
+cd .\test\
+ll
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g pl
+g cob feature/ab#13337/app-configuration
+g com
+g pl
+g co feature/ab#13337/app-configuration
+g m master
+g m main
+cd ..
+dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g com
+g pl
+g cob feature/ab#13337/app-configuration-pt2
+g ca
+g ps
+g com
+g stash clear
+g pl
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g co feature/ab#12988-quoteservice-integration
+g com
+g rsh
+g com
+g pl
+cd ..
+ll
+mv .\fabriziomeinero.com\ .\__fabriziomeinero.com
+cd .\dev\
+mv .\fabriziomeinero.com\ .\__fabriziomeinero.com
+ll
+start .
+g clone git@github.com:withastro/astro.build.git fabriziomeinero.com
+cd .\fabriziomeinero.com\
+code ,
+code .
+iwr https://get.pnpm.io/install.ps1 -useb | iex
+pnpm i
+code .\dev\fabriziomeinero.com\
+pnpm i
+pnpm
+pnpm run 
+pnpm run dev
+pnpm dlx @astrojs/upgrade
+pnpm uninstall @astrojs/solid-js
+pnpm uninstall @astrojs/db
+pnpm run dev
+pnpm uninstall solid-js
+pnpm run dev
+pnpm uninstall @astrojs/db
+pnpm run dev
+pnpm uninstall @astrojs/web-vitals
+pnpm run dev
+pnpm install solid-js
+pnpm run dev
+pnpm uninstall @astrojs/solid-js
+npx astro add solid-js
+pnpm run dev\
+pnpm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+g pl
+npm run dev
+az login
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g cob fix/august-6-2024-incident
+npm run lint:fix
+npm test
+npx jest --watch --coverage=false pages/quote/_pc1.spec.ts
+cd .\dev\fabriziomeinero.com\
+pnpm run dev
+g com
+g pl
+cd .\bin\ngrok\
+ngrok http https://localhost:5052
+.\ngrok.exe http https://localhost:5052
+pnpm run dev
+cd .\dev\QuoteCreator\
+g pl
+g co feature/ab#12991-sidebar-filter-quotes
+cd .\dev\QUI\
+g pl
+pnpm run storybook
+cd .\dev\QUI\
+code .
+pnpm link --global
+cd .\src\QuoteCreator.Web\node_modules\
+cd ..\npm_packages\
+npm link @ts/qui-vue
+pnpm run build.watch
+code .
+pnpm run build.watch
+npm link
+npm link @ts/qui
+pnpm run build.watch
+npm run build
+npm run build
+Write-Output "Restarting $($_.AppName)..."
+Start-Sleep -Seconds 30 
+g com
+g rsh
+g pl
+npm i
+npm link @ts/qui
+npm run build
+npm run watch-css
+g pl
+cd .\dev\
+g clone git@github.com:markteekman/accessible-astro-starter.git fm
+cd .\fm\
+pnpm install
+code .
+pnpm run dev
+cd  .\dev\
+npm create astro@latest -- --template portfolio
+pnpm run dev
+g co 3041950ee0020f285e817cb634bfb587c3a62375
+g co feature/ab#12991-sidebar-filter-quotes
+g pl
+g com
+g pl
+g cob feature/ab#12991/refactoring
+g co 3ad34c5fd875c839543de3a973928c9dfeedb177
+g co 3041950ee0020f285e817cb634bfb587c3a62375
+g co 4a4bf9265b3d53cbb8e2222e2882bec127ecae2c
+g co 41036e53f1ae454bc5da0e5ccab155e6ba7c3480
+g com
+g co 165b0e78446bc4a40ba201b36bc6f1e5ef1d46d7
+g com
+g co c508ecae8b5728fe640f859b7e1dbbd3cdeafad4
+g co 3ad34c5fd875c839543de3a973928c9dfeedb177
+g co v
+g co 3041950ee0020f285e817cb634bfb587c3a62375
+g co 66e2623802cb1a928a8619786868aa7edcd1794e
+g com
+g co v
+g co 3a85595a6188f4b864e26d74e6b8728828435d5c
+g co 73c03a19f986c091b3d9154c1a4525d081692553
+g co df1f1b7828052c7d1f1f6c614abf5fbb322bc554
+g com
+g co 8cc1c77c5a53edfaf1abd01c904f7e1ca79e6692
+g com
+g co 37ca779eb19150db5cb04c9fbd6af04bf4a985f0
+g com
+g co 4a4bf9265b3d53cbb8e2222e2882bec127ecae2c
+g com
+g rsh
+g com
+g co feature/ab#12988-fix-requesting-succeeding-quotes
+g com
+npm run build
+g co feature/ab#12988-fix-requesting-succeeding-quotes
+g pl
+pnpm run storybook
+g com
+g pl
+g co feature/ab#12991/refactoring
+g m main
+g co feature/ab#12988-fix-requesting-succeeding-quotes
+g m main
+g com
+g pl
+g cob feature/ab#13338/add-tests
+code ../..
+code ../../..
+g com
+npm run build
+npm i @ts/qui@latest
+g cob feature/use-qui-loader
+g com
+g pl
+code .\EventReportingService\
+ll
+cd ../../..
+cd .\infra\
+ll
+cd .\test\
+ll
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+code .\EventReportingService\
+g pl
+cd ../../
+cd .\src\QuoteCreator.Web\
+dotnet add package Rebus.Microsoft.Extensions.Logging --version 5.0.0
+az login
+cd ..
+cd .\QuoteCreator.Application\
+ll
+dotnet add package Rebus.Microsoft.Extensions.Logging --version 5.0.0
+code .
+az login
+cd dev
+ll
+cd .\CustomerPortal-v2\
+ll
+start .
+ll
+cd .\TheSustainables.CustomerPortal\
+ll
+cd .\ClientApp\
+npm run dev
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\
+ll
+g pl
+npm run dev
+npm i
+code .
+npm run dev
+ cd .\ClientApp\
+npm test
+npm run lint:fix
+dotnet new
+dotnet new list
+cd .\dev\QuoteCreator\
+ll
+start
+ll
+dotnet restore --interactive
+cd .\src\
+dotnet restore --interactive
+ll
+cd .\QuoteCreator.Web.Tests\
+dotnet add package FluentAssertions
+g cob feature/ab#13338/add-tests
+g b D feature/ab#13338/add-tests
+g cob feature/ab#13338/add-tests
+g b -D feature/ab#13338/add-tests
+g cob feature/ab#13338/add-tests
+cd ..
+cd .\QuoteCreator\
+ll
+code .
+g com
+g pl
+cd dev
+ll
+cd .\fm\
+pnpm run dev
+cd ..
+ll
+rmrf .\fm\
+cd .\fm.com\
+pnpm run dev
+cd dev
+ll
+cd .\fabriziomeinero.com\
+pnpm run dev
+cd ..
+mv .\fm.com\ .\___fm.com
+g clone git@github.com:onwidget/astrowind.git fm.com
+cd .\fm.com\
+pnpm install
+pnpm run dev
+code .
+pnpm run dev
+cd dev
+code .\EventReportingService\
+code .\EnergyShop.HomeQgo-v2\
+ll
+cs .\src\
+cd .\src\
+dotnet test --configuration Release --no-build --collect "XPlat Code coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura,opencover
+dotnet build
+dotnet test
+ll
+cd .\QuoteCreator.Web.E2E.Tests\
+dotnet add package Microsoft.Playwright.MSTest
+pwsh bin/Debug/netX/playwright.ps1 install
+ll
+dotnet build
+pwsh bin/Debug/netX/playwright.ps1 install
+pwsh .\bin\Debug\net8.0\playwright.ps1
+pwsh .\bin\Debug\net8.0\playwright.ps1 install
+$env:HEADED="1"
+dotnet test
+az login
+dotnet test
+pwsh bin/Debug/net8.0/playwright.ps1 codegen demo.playwright.dev/todomvc
+pwsh bin/Debug/net8.0/playwright.ps1 codegen http://localhost:5151/heatpump?scanId=c82bea84-bd77-4e4e-8adc-91b128886872&userId=32bac43d-1d7d-490b-b88e-abfa3b36d0cb&campaignKey=warmtepomp_collectief_consumentenbond_2024&scanType=HeatpumpScan&phonenumber=01234567890&email=test1722821811635@thesustainables.com&firstname=Maximillian&lastname=Maximillian&trafficpartnerkey=consumentenbond&fulfillmentpartnerkey=homeQgo
+dotnet test
+dotnet test dotnet test --filter "HeatpumpQuoteCreatorPage_CanFilterQuotes"
+'dotnet' test --filter "HeatpumpQuoteCreatorPage_CanFilterQuotes"
+dotnet test --filter "HeatpumpQuoteCreatorPage_CanFilterQuotes"
+dotnet test --filter "HeatpumpQuoteCreatorPage_WhenFilterByOneInstallerAndProduct_ShouldShowAllMatchingQuotes"
+dotnet test
+dotnet test --filter "HeatpumpQuoteCreatorPage_CanRequestAQuote"
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+dotnet test --filter "HeatpumpQuoteCreatorPage_CanRequestAQuote"
+dotnet test
+dotnet test --filter "HeatpumpQuoteCreatorPage_WhenFilterByOneInstaller_ShouldShowAllMatchingQuotes\"
+dotnet test --filter "HeatpumpQuoteCreatorPage_WhenFilterByOneInstaller_ShouldShowAllMatchingQuotes"
+dotnet test
+dotnet test --filter "HeatpumpQuoteCreatorPage_WhenFilterByOneInstaller_ShouldShowAllMatchingQuotes"
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+dotnet test --filter "HeatpumpQuoteCreatorPage_WhenFilterByOneInstaller_ShouldShowAllMatchingQuotes"
+dotnet test
+g com
+g pl
+g co feature/ab#13338/add-tests
+g m main
+pwd
+cd ..
+dotnet run
+dotnet run --configuration Release
+cd .\QuoteCreator.Web\
+ll
+cd ..
+dotnet build --configuration Release
+ll C:\Users\fabri\dev\QuoteCreator\src\QuoteCreator.Web.E2E.Tests\bin\Release\net8.0\
+cd .\QuoteCreator.Web\
+dotnet run --configuration Release
+dotnet run --configuration Release --no-build
+dotnet run --configuration Release --no-build  --environment Staging
+dotnet run --configuration Release --no-build  --environment Development
+dotnet run --configuration Release --no-build  --environment Test
+cd .\dev\QuoteCreator\src\QuoteCreator.Web.E2E.Tests\
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+$env:HEADED="1"
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+dotnet run --configuration Release --no-build  --environment Development
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+dotnet run --configuration Release --no-build  --environment Test
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+dotnet run --configuration Release --no-build  --environment Test
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+dotnet run --configuration Release --no-build  --environment Test
+dotnet test --filter "HeatpumpQuoteCreatorPage_HasFiltersAndQuotes"
+g com
+g co feature/ab#13322-support-discounttype-amount
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+g cob feature/ab#13446/discount-type
+cd .\dev\EnergyShop.HomeQgo-v2\Api\
+dotnet restore --interactive
+cd ..
+cd  ..
+ll
+dotnet restore --interactive
+cd .\TheSustainables.CustomerPortal\
+dotnet run
+dotnet restore --interactive
+az login
+dotnet run
+npm i
+code fabrizio_test_campaign_v1.json
+g clone git@github.com:TheSustainables/CampaignService.git
+cd .\CampaignService\
+start .
+ll
+dotnet restore --interactive
+code ../../
+code ../
+cd dev
+ll
+g clone git@github.com:TheSustainables/Infrastructure-Terraform.git
+code .\Infrastructure-Terraform\
+npm run dev
+npm run dev
+code .\ClientApp\
+ll
+cd .\ClientApp\
+npm test
+npx jest --watch --coverage=false components/quotes/overview/QuoteOverviewOfferPriceDetails.spec.ts
+npm test
+npx jest --watch --coverage=false components/quotes/overview/QuoteOverviewOffer.spec.ts
+npm test
+npx jest --watch --coverage=false components/quotes/QuoteDetail.spec.ts
+npx jest --watch --coverage=false components/quotes/overview/QuoteOverviewOffer.spec.ts
+npm test
+npm run lint:fix
+npx jest components/quotes/QuoteDetail.spec.ts
+az webapp list-runtimes --os-type linux
+winget search "obs studio"
+winget install OBSProject.OBSStudio --silent
+g pl
+g co m
+ll
+g com
+g pl
+g co feature/ab#13446/discount-type
+g m master
+g com
+g pl
+g co feature/ab#13446/discount-type
+az --help
+az login --tenant aa8f6f48-5c58-40f7-b8c8-02b0cb9a6183 --use-device-code
+az login --identity
+az login --identity a9b0db4d-ad85-4b9c-90fe-dfaf2cef38e1
+az login --identity --username a9b0db4d-ad85-4b9c-90fe-dfaf2cef38e1
+az account
+az account show
+pwd
+cd ../..
+code .
+g co feature/ab#13338/add-tests
+az login --service-principal --username a9b0db4d-ad85-4b9c-90fe-dfaf2cef38e1
+az group list
+az login --tenant aa8f6f48-5c58-40f7-b8c8-02b0cb9a6183 --use-device-code
+g co feature/ab#9769/migrate-auth-validation
+g com
+g pl
+g m main
+g pl
+g co feature/ab#9769/migrate-auth-validation
+g m main
+code .
+g m abort
+g com
+g com
+g pl
+g co feature/ab#13322/update-campaign-banner
+g cob feature/ab#13322/update-campaign-banner
+g rsh
+npm run dev
+cd ..
+ndr
+dotnet run
+g s
+g clean -df
+dotnet run
+cd dev
+ll
+cd .\QUI\
+ll
+g rsh
+g pl
+pnpm run build.watch
+cd dev\QUI\
+code .
+pnpm run storybook
+g co feature/ab#13322-add-discount-to-pc1
+g fetch
+g co feature/ab#13322-add-discount-to-pc1
+npm i
+npm run dev
+g pl
+g rsh
+g pl
+g rsh
+g pl
+git rm -rf --cached .
+git add .
+g ps
+code .
+g
+g com
+g cob feature/ab#13291/track-heatpump-request
+g com
+g pll
+fg pl
+g pl
+g co feature/ab#13291/track-heatpump-request
+g merge master
+npm test
+cd .\ClientApp\
+npm test
+cd ..
+ll
+cd .\Infrastructure-Terraform\
+g pl
+code .
+host scan-test.homeqgo.nl
+host --help
+host -h
+Get-Host --help
+host
+Resolve-DNSName google.com
+Resolve-DNSName scan-test.homeqgo.nl
+Get-Alias Resolve-DNSName
+Get-Alias -Name Resolve-DNSName
+Get-Alias -Definition Resolve-DNSName
+Get-Alias -Definition Get-ChildItem
+Resolve-DNSName scan-test.homeqgo.nl
+[System.Net.Dns]::GetHostAddresses('testfrontdoor123768.azurefd.net')  
+g com
+g pl
+g cob feature/ab#13597/remove-advised-package
+az login
+dotnet restore --interactive
+cd ..
+dotnet restore --interactive
+npm test
+cd .\ClientApp\
+npm test
+npm run lint:fix
+g cob feature/ab#13597/composition-api
+npm test
+npm run lint:fix
+ll
+code .\Infrastructure-Terraform\
+g clone git@github.com:TheSustainables/ContentPages.HomeQgo-V2.git
+cd .\ContentPages.HomeQgo-V2\
+ll
+code .
+cd .\infra\
+ll
+cd .\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+ll
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\prod\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init
+az login --allow-no-subscriptions
+az account show
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+npm link @ts/qui
+gg pl
+gg pl
+g pl
+g co feature/append-modal-to-body
+pnpm run build.watch
+pnpm run storybook
+npm run dev
+cd dev
+code .\QUI\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+code .
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+ terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+gg pl
+g pl
+cd ..\test\
+ terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+ terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g com
+g pl
+g cob feat/ab#13603/test-ssl-certificates-pt2
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\prod\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g pl
+cd ..\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g pl
+g cob feat/ab#13603/test-ssl-certificates
+g com
+gg pl
+g pl
+g cob feat/ab#13603/test-ssl-certificates-pt3
+ll
+cd .\thesustainables\
+ll
+cd .\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+ll
+cd .\general\
+oll
+ll
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+g com
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+g co feat/ab#13603/test-ssl-certificates
+g pl
+g com
+g cob feat/ab#13721/add-www-endpoint
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+az login --allow-no-subscriptions
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\prod\
+ll
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+code .
+g com
+g cob feat/test
+g co feat/ab#13721/add-www-endpoint
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\prod\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform init -h''
+terraform init -reconfigure
+ll
+rmrf .\.terraform\
+rmrf .\.terraform.lock.hcl
+terraform init
+g com
+g cob feat/ab#13721/add-www-endpoint-p2
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g cob
+g com
+g pl
+g cob feat/test2
+cd ..\prod\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init -upgrade
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+g com
+g pl
+g cob feat/ab#13721/add-www-endpoint-p4
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+winget search "tailscale"
+winget install tailscale.tailscale --silent
+az login
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+cd .\dev\ContentPages.HomeQgo-V2\
+code .
+g com
+g pl
+g cob feat/ab#13604/revert-www-endpoint
+cd .\infra\test\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..\prod\
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd dev
+ll
+g clone https://slimwonen.abnamro.nl/landingpage-widget
+g clone git@github.com:TheSustainables/EnergyShop.AbnAmro.git
+start .\EnergyShop.AbnAmro\
+cd .\EnergyShop.AbnAmro\
+ll
+cd .\TheSustainables.EnergyShop.AbnAmro\
+CD .\ClientApp\
+code .
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+code .
+cd dev/
+ll
+g clone git@github.com:TheSustainables/QuoteAPI.git
+cd .\QuoteAPI\
+start .
+ll
+dotnet restore --interactive
+dotnet dev-certs https --trust
+code .
+code ../../..
+code ../../
+g rsh
+g com
+g pl
+g co feature/ab#13799-hide-unadvised-heatpump-advice-page
+npm i
+npm run dev
+az login
+cd ../..
+cd .\dev\Infrastructure-Terraform\
+code .
+ll
+code $PROFILE
+ll
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+ll
+g com
+g pl
+npm i
+winget search "neovim"
+winget install Neovim.Neovim --silent
+nvim
+npm run dev
+az login
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+code .
+g rsh
+g com
+g pl
+npm run dtsgen
+g com
+g pl]
+g pl
+g co feature/ab#13753-direct-http-calls-without-apim
+dotnet restore --interactive
+cd ..
+dotnet restore --interactive
+npm test
+ll
+cd .\Api\ClientApp\
+npm test
+npx jest --watch --coverage=false components/advice/AdviceIntro.spec.ts
+npm test
+npx jest --watch --coverage=false domain/house-facts/createHouseFactsForm.spec.ts
+npm test
+g co feature/fix-advisor-report
+g com
+az login
+npm test
+ll
+npm test -- -u
+npm run dev
+npm run lint:fix
+cd dev
+ll
+cd .\fm.com\
+npm run dev
+cd dev
+ll
+cd .\fabriziomeinero.com\
+npm run dev
+cd .\dev\fabriziomeinero.com\
+code .
+cd .\dev\fm.com\
+npm run dev
+dotnet restore --interactive
+cd ../..
+dotnet restore --interactive
+code .
+systemctl show --property ActiveState docker
+cd dev
+cd .\EnergyShop.AbnAmro\TheSustainables.EnergyShop.AbnAmro\ClientApp\
+code .
+cp C:\Users\fabri\Downloads\MDIO.woff2 .\public\fonts\
+cd C:\Users\fabri\Desktop\
+mv .\land.jpg .\super-mario\
+cd dev
+ll
+cd .\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+g rsh
+g pl
+g co feature/fix-advisor-report
+g pl
+npm run dev
+ll
+cd .\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd dev
+cd .\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+g pl
+g cob fix/heatpump-e2e
+cd dev
+cd .\CustomerPortal-v2\
+ll
+g com
+g pl
+g co 39bc72a7e8561ea87952b84948a47c3e30b2718c
+g com
+g cob hotfix/null-content-key 39bc72a7e8561ea87952b84948a47c3e30b2718c
+g cherry-pick edf0d7bb3b89fbc7d09d64e9ae2c9855c936fc3a
+g lg
+nvim .\azure-pipelines.yml
+nvim .\dev\EnergyShop.HomeQgo-v2\azure-pipelines.yml
+git clone git@github.com:imfaber/imfaber.nvim.git "${env:LOCALAPPDATA}\nvim"
+env:LOCALAPPDATA
+cd env:LOCALAPPDATA/nvmim
+cd $LOCALAPPDATA/nvmim
+cd $LOCALAPPDATA
+cd :env$LOCALAPPDATA
+env:LOCALAPPDATA
+env:
+env
+ll
+cd ..
+ll
+cd .\fabri\
+ll
+LOCALAPPDATA
+$env:APPDATA
+$env:LOCALAPPDATA
+cd $env:LOCALAPPDATA
+ll
+cd .\nvim\
+ll
+nvim
+ll
+nvim .\init.lua
+winget search "cc"
+winget search "build tools"
+winget install Microsoft.BuildTools2015
+nvim .\init.lua
+cd $env:LOCALAPPDATA
+nvim .\init.lua
+winget uninstall Microsoft.BuildTools2015
+nvim .\init.lua
+winget install zig.zig
+nvim .\init.lua
+cd $env:LOCALAPPDATA
+nvim .\init.lua
+cd ../
+cd .\Local\
+ll
+rmrf .\nvim-data\
+cd .\nvim\
+nvim .\init.lua
+cd dev
+ll
+g clone git@github.com:TheSustainables/AdviceService.git
+cd .\AdviceService\.git\
+cd ..
+ll
+dotnet restore --interactive
+start .
+code .
+g cob chore/remove-autorest-client
+cd ..
+ll
+cd .\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd deevv
+''
+'34fffgggggg'
+[[[]]]][[[[[[[[[[[[[........,,,,,,,,\\\\]]]]]]]]]]]]]
+=-09999999999999999999999999977777777777777776666000---[================000000000000000000000000000000000011111111111144444444444444444444444444444555555555-88888\\]
+clear
+cd dev
+ll
+cd .\QuoteAPI\
+g com
+g pl
+g cob feat/ab#14009/all-electric-heatpump
+start .
+g com
+g pl
+cd .\dev\EnergyShop.HomeQgo-v2\Api\
+dnr
+npm run dev
+cd .\dev\
+ll
+cd .\Infrastructure\
+g pl
+nvim .
+cd .\dev\Infrastructure\arc
+cd .\dev\Infrastructure\Architecture\
+ll
+cd .\AsyncAPI\
+ll
+npx -p @asyncapi/cli asyncapi generate fromTemplate ./definition.yaml @asyncapi/html-template -o ./dist
+start .\dist\
+npx -p @asyncapi/cli asyncapi generate fromTemplate ./definition.yaml @asyncapi/html-template -o ./dist
+g lg
+npx -p @asyncapi/cli asyncapi generate fromTemplate ./definition.yaml @asyncapi/html-template -o ./dist
+cd .\Architecture\AsyncAPI\
+nvvim .\definition.yaml\
+nvim .\definition.yaml\
+nvim .\definition.yaml
+g ps
+g ps
+az login
+cd deev
+ccd dee
+cd dev
+g clone git@github.com:TheSustainables/PartnerAPI.git
+cd .\PartnerAPI\
+start .
+dotnet restore --interactive
+dotnet -h
+dotnet clean
+cd ..
+rmrf .\PartnerAPI\
+cd .\EventReportingService\
+g s
+g d
+g com
+g pl
+cd ..
+ll
+g clone git@github.com:TheSustainables/ZohoAdapter.git
+cd .\ZohoAdapter\
+ll
+dotnet restore --interactive
+nvim .
+start .
+cd ..
+cd .\EventReportingService\
+g cob feat/ab#13796/add-all-electric-heatpump
+g ps
+cd ..
+ll
+g clone git@github.com:TheSustainables/ScanEditor.git
+cd .\ScanEditor\
+ll
+dotnet restore --interactive
+start .
+cd ..\EventReportingService\
+nvim .\azure-pipelines.yml
+ll
+nvim .\azure-pipelines.yml
+g cob feat/ab#13796/add-all-electric-heatpump-pt2
+g ps
+git push --set-upstream origin feat/ab#13796/add-all-electric-heatpump-pt2
+nvim .\azure-pipelines.yml
+g co feat/ab#13796/add-all-electric-heatpump
+g stash
+g ps
+g com
+g b -D feat/ab#13796/add-all-electric-heatpump
+g b -D feat/ab#13796/add-all-electric-heatpump-pt2
+g cob feat/ab#13796/add-all-electric-heatpump
+nvim .\azure-pipelines.yml
+ll
+cd .\infra\
+ll
+cd .\modules\
+ll
+cd ..
+code .
+code ..
+cd .\Desktop\super-mario\
+code .
+start .
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g s
+g rsh
+g com
+g pl
+g cob feat/ab#14036/sign-up-or-sign-in
+npm run dev
+code .
+cd ..
+dotnet restore --interactive
+cd ..
+dotnet restore --interactive
+ll
+ccd .\bin\
+cd .\bin\
+ll
+cd .\ngrok\
+.\ngrok.exe http https://localhost:5052
+az login
+winget search "firefox"
+winget install Mozilla.Firefox
+code .\Api\ClientApp\
+g com
+cd dev
+ll
+cd .\AdviceService\
+g pl
+cd ..
+ll
+g pl
+g cob feat/ab#14036/sign-up-or-sign-in-pt2
+npm run dtsgen
+cd .\Api\ClientApp\
+npm run dtsgen
+npm test
+npx jest --watch --coverage=false components/quote/QuoteProcessor.spec.ts
+npm test
+npm run lint:fix
+g pl
+g com
+g pl
+g cob feat/ab#13791/pc1-submission
+g co feat/ab#14036/sign-up-or-sign-in-pt2
+g pl
+npx jest --watch --coverage=false components/quote/QuoteProcessor.spec.ts
+g co feature/ab#13791-add-boiler-space-question-pc1
+dotnet restore --interactive
+g pl
+cd ../..
+dotnet restore --interactive
+dotnet clean
+cd .\Api\ClientApp\
+npm run dtsgen
+cd ../..
+dotnet restore --interactive
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+code .
+cd .\dev\CustomerPortal-v2\
+g s
+g rsh
+g com
+g pl
+cd .\TheSustainables.CustomerPortal\
+ll
+code .\ClientApp\
+cd .\ClientApp\
+npm run dev
+npm i
+npm run dev
+cd .\bin\ngrok\
+.\ngrok.exe http https://localhost:5052
+cd .\dev\CustomerPortal-v2\
+dotnet restore --interactive
+cd .\dev\EnergyShop.AbnAmro\
+g pl
+ll
+cd .\TheSustainables.EnergyShop.AbnAmro\ClientApp\
+npm run dev
+npm i
+cd .\dev\EnergyShop.AbnAmro\
+dotnet restore --interactive
+npm run dev
+start .
+cd .\dev\EnergyShop.AbnAmro\
+cd .\TheSustainables.EnergyShop.AbnAmro\
+dnr
+az login
+dnr
+cd .\dev\EnergyShop.AbnAmro\
+g s
+git diff components\quote\QuoteProcessor.vue
+git diff components\quote\QuoteProcessor.vue > C:\Users\fabri\Desktop\fix.patch
+npm test
+npx jest --watch --coverage=false ./domain/pc1/heatpump/useHeatpumpPc1.spec.ts
+npx jest --watch --coverage=false ProductRefinementHeatpump.spec.ts
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.tsts
+npx jest --watch --coverage=false ProductRefinementHeatpump.spec.tsts
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.ts
+npm run dev
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.ts
+npm ls vue-template-compiler
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.ts
+npm run dev
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.ts
+cd ../..
+restore
+dotnet restore --interactive
+dotnet clean
+dotnet restore --interactive
+dotnet build
+cd .\Api\ClientApp\
+npm run lint:fix
+cd ..
+cd .\QuoteCreator\
+ll
+g com
+g pl
+dotnet restore --interactive
+cd .\src\
+dotnet restore --interactive
+cd .\QuoteCreator.Web\npm_packages\
+npm i
+g pl
+cd ..
+az login
+dnr
+cd ..
+dotnet clean
+dotnet build
+cd .\QuoteCreator.Web\
+dotnet run
+dotnet build
+dotnet watch
+code ..\..\infra\
+g com
++g pl
+g pl
+npx jest --watch --coverage=false components/quote/QuoteProcessor.spec.ts
+npm run lint:fix
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+code .
+g pl
+cd .\bin\ngrok\
+.\ngrok.exe http https://localhost:5052
+cd .\dev\CustomerPortal-v2\
+g s
+g clean -df
+g rsh
+g pl
+cd .\dev\CustomerPortal-v2\
+cd .\TheSustainables.CustomerPortal\
+cd .\TheSustainables.CustomerPortal\ClientApp\
+ccd ..
+cd ..
+dotnet restore --interactive
+npm run dev
+code $PROFILE
+exit
+exit
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+cd .\dev\CustomerPortal-v2\
+cd .\TheSustainables.CustomerPortal\ClientApp\
+cd .\TheSustainables.CustomerPortal\
+npm run dev
+dnr
+g com
+npx jest --watch --coverage=false components/quote/QuoteProcessor.spec.ts
+npm test
+g pl
+g cob feat/ab#14036/sign-up-or-sign-in-pt3
+cd .\dev\EnergyShop.AbnAmro\
+dotnet restore --interactive
+cd .\TheSustainables.EnergyShop.AbnAmro\ClientApp\
+code .
+npm run build
+cd .\bin\ngrok\
+.\ngrok.exe http https://localhost:5051
+npm run lint
+npm run lint
+npm run dev
+g cob
+g com
+g pl
+g cob fix/pipeline-e2e
+npm run lint
+git reset --hard origin/master
+g s
+g stash show
+g stash show 0
+g stash show 1
+g stash pop
+g d
+g cob fix/use-layout
+g ca
+g ps
+git push --set-upstream origin fix/use-layout
+.\ngrok.exe http https://localhost:5051
+.\ngrok.exe http http://localhost:5051
+g com
+cd ..
+dotnet restore --interactive
+g pl
+az login
+.\ngrok.exe http https://localhost:5052
+cd ../..
+cd .\dev\CustomerPortal-v2\
+g pl
+g co feature/ab#13792-add-allelectric-in-cp
+ls
+dotnet restore --interactive
+g pl
+g cob feat/ab#13791/get-impossibility-reasons
+npm run lint
+cd ..
+dotnet restore --interactive
+dotnet build
+dotnet restore --interactive
+cd .\Api\ClientApp\
+npm run dtsgen
+npm test
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.ts
+npm run lint
+code $PROFILE
+exit
+exit
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm test
+npm test -- -u
+npm run lint
+g pl
+g com
+g pl
+cd ..
+dotnet restore --interactive
+g cob feat/upgrade-as
+g com
+g pl
+dotnet restore --interactive
+npm test
+cd cli
+cd .\Api\ClientApp\
+npm test
+g cob feat/ab#13791/use-pre-selected-initially-installed-products
+npx jest --watch --coverage=false createHouseFactsForm.spec.ts
+npm run lint
+g com
+g pl
+g m master
+cd ../..
+dotnet restore --interactive
+g com
+g d
+g rsh
+g pl
+g cob hotfix/hide-all-e-heatpump
+g cca
+g ca
+g ps
+git push --set-upstream origin hotfix/hide-all-e-heatpump
+npm run lint:fix
+cd .\Api\ClientApp\
+npm run lint:fix
+g com
+g pl
+g cob fix/heat-system-mapping
+npm test
+npx jest --watch --coverage=false domain/house-facts/createHouseFactsForm.spec.ts
+g rsh
+g com
+g pl
+g cherry-pick ea0f721a578bb4b04e30e4660a8305e919c77c18
+g lg
+g ps
+g com
+g pl
+g cob feat/ab#9097/energy-usage-estimation-update
+npm test
+npx jest --watch --coverage=false domain/house-facts/createHouseFactsForm.spec.ts
+npm test
+g cop
+npm i
+g com
+g s
+g rsh
+g clean -df
+g s
+g pl
+npm run dev
+code .\ClientApp\
+cd ..
+g rsh
+g s
+g clean -df
+dotnet restore --interactive
+exit
+cd dev/TheSustainables.CustomerPortal
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\
+az login
+cd .\dev\QuoteCreator\
+g s
+g diff
+g pl
+dotnet restore --interactive
+g com
+g pl
+g co hotfix/hide-all-e-heatpump
+cd ../..
+dotnet restore --interactive
+az login
+g com
+g co bugfix/fix-heatpump-space-selection
+g m fix/all-products-in-heatpump-savings
+g com
+g pl
+g rsh
+g com
+g pl
+az login
+cd dev
+ll
+code .\fabriziomeinero.com\
+code .\fm.com\.astro\
+code .\fm.com\
+code .\ClientApp\
+nim i
+npm i
+npm run dev
+cd .\Infrastructure-Terraform\
+g com
+g pl
+code .
+g cob feat/ab#14303/health-and-ssl-alerts
+g pl
+g pl
+g cob feat/enable-housescan-all-e-heatpump
+npm test
+cd .\Api\ClientApp\
+npm test
+npm run lint:fix
+ll
+cd .\thesustainables\
+ll
+cd .\test\
+ll
+cd .\abn\
+ll
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+terraform init -upgrade
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+g com
+g pl
+g rsh
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+az login --allow-no-subscriptions
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+g com
+g pl
+g cob feat/ab#14303/health-and-ssl-alerts-pt2
+g s
+g d
+g rsh
+code .
+az login
+g com
+g cob feat/ab#14432/quote-comparison-feature-setting
+npm run dtsgen
+cd .\ClientApp\
+g cob feat/ab#14432/quote-comparison-feature-setting
+npm run dtsgen
+g com
+g pl
+g cob feat/ab#14461/heatpump-dummy-card
+g com
+g cob feat/ab#14460/block-installed-heatpumps
+npx jest --watch --coverage=false domain/house-facts/createHouseFactsForm.spec.ts
+g com
+g pl
+g cob fix/october-25-2024-incident
+g com
+g pl
+code C:/Users/fabri/AppData/Local/Temp/17301944340720/sign-up.html
+cd dev/
+ll
+g clone git@github.com:TheSustainables/customer-journey-auth-ui.git
+cd .\customer-journey-auth-ui\
+code .
+cd ..
+g clone
+g clone git@github.com:TheSustainables/aadb2c-infra-as-code.git
+cd .\aadb2c-infra-as-code\
+code .
+pwd
+ll
+cd .\policy\
+ll
+cd ..\scripts\
+ll
+cd .\initial\
+l
+ll
+.\Install-RequiredModules.ps1
+Import-Module -Name Microsoft.Graph.Authentication
+.\Install-RequiredModules.ps1
+cd .\initial\
+.\Install-RequiredModules.ps1
+cd .\dev\
+ll
+cd .\aadb2c-infra-as-code\
+cd .\scripts\initial\
+.\Install-RequiredModules.ps1
+Get-Module -ListAvailable
+Import-Module -Name Microsoft.Graph.Authentication -Scope Local -Force
+ll
+g s
+g cob feature/app-insights
+g ca
+g ps
+ git push --set-upstream origin feature/app-insights
+az login
+npm test
+npm test
+npm run lint:fix
+g ps
+npx jest --watch --coverage=false ./domain/pc1/heatpump/useHeatpumpPc1.spec.ts
+npx jest --watch --coverage=false legacy-pc1-submission.spec.ts
+az login
+code ../
+g pl
+g com
+npm run lint:fix
+npm test
+cd dev/
+ll
+cd .\customer-journey-auth-ui\
+g com
+g pl
+code .
+cd dev/
+ll
+cd .\Infrastructure-Terraform\
+g com
+g pl
+code .
+cd .\Infrastructure-Terraform\
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g com
+g pl
+npm run dev
+az login
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run lint:fix
+npm test
+g com
+g pl
+g cob hotfix/safary-req-initiator a2dda7c4a7a03982b294859cc1a959f449884bff
+g cherry-pick ea493e739fa2ffc121278e8bc27e942499e47f48
+g lg
+g ps
+ git push --set-upstream origin hotfix/safary-req-initiator
+az login
+npm run dtsgen
+cd dev
+ll
+cd .\customer-journey-auth-ui\
+g pl
+code .
+cd ..
+cd .\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+npm run dev
+cd .\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+cd .dev\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+code .
+npm test
+npx jest --watch --coverage=false utils/legacy-pc1-submission.spec.ts
+npm run lint:fix
+npm run dtsgen
+az login
+npm test
+npx jest --watch --coverage=false mixins/AdviceIntroMixin.spec.ts
+npm run dtsgen
+npx jest --watch --coverage=false mixins/AdviceIntroMixin.spec.ts
+npm test
+g pl
+npm test
+npm run lint:fix
+g com
+g pl
+npm run devv
+npm run dev
+npm i
+npm run dev
+cd ..
+dotnet restore --interactive
+dotnet run
+cd ..
+dotnet restore --interactive
+code .
+cd .\TheSustainables.CustomerPortal\ClientApp\
+npm run dtsgen
+code .
+npm test
+npm run dtsgen
+npx jest --watch --coverage=false components/quotes/list/QuotesListProductTable.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false components/quotes/list/QuotesListProductTableComparisonRow.spec.ts
+npm run dev
+npm i
+vsts-npm-auth -config .npmrc -F
+npm i
+npm run dev
+npm i wu
+npx jest --watch --coverage=false ./utils/mappers.spec.ts
+npm i @types/wu -D
+npm run dev
+npm test
+npm run dev
+npm test
+npm run lint:fix
+npm test
+npx jest --watch --coverage=false store/quote.spec.ts
+npm test
+npx jest --watch --coverage=false pages/quotes/comparison/_product/index.spec.ts
+npm test
+g com
+g cob feature/ab#14924/advice-in-quote-model
+npm run dtsgen
+g com
+g pl
+npm test
+g com
+g pl
+g cob feature/ab#14924/redirect-to-comparison-page
+az login
+npm test
+npx jest --watch --coverage=false pages/quotes/index.spec.ts
+npm run lint:fix
+g cob feature/ab#14762/remove-panel-type
+g com
+g pl
+g cob feature/ab#14924/include-only-1-product
+npm run dtsgen
+az login
+g pl
+npm test
+npm test -- -u
+g ps
+g ca
+g ps
+cd ..
+ll
+cd ..
+ll
+cd .\Advice.Tests\
+dotnet add package FluentAssertions --version 6.12.2
+g com
+g pl
+g co feature/ab#14924/include-only-1-product
+g m main
+cd ..
+dotnet restore --interactive
+cd .\TheSustainables.CustomerPortal\ClientApp\
+npm run dtsgen
+npm run dev
+g fetch
+g m feature/ab#13602-installer-specific-content
+g co feature/ab#13602-installer-specific-content
+g co feature/ab#14924/include-only-1-product
+g m feature/ab#13602-installer-specific-content
+npm run dev
+npm test
+npm test
+npx jest --watch --coverage=false components/quotes/QuoteDetail.spec.ts
+npx jest --watch --coverage=false components/quotes/QuoteFinalRequest.spec.ts
+npm test
+npx jest --watch --coverage=false pages/quotes/index.spec.ts
+npm test
+npx jest --watch --coverage=false pages/quotes/_id/confirmation.spec.ts
+npm test
+npx jest --watch --coverage=false components/quotes/comparison/QuoteComparisonCard.spec.tss
+npx jest --watch --coverage=false components/quotes/comparison/QuoteComparisonCard.spec.ts
+npx jest --watch --coverage=false pages/quotes/comparison/_product/index.spec.ts
+npx jest --watch --coverage=false components/campaign/CampaignBanner.spec.ts
+npm test
+npx jest --watch --coverage=false pages/quotes/_id/index.spec.ts
+npm test
+npx jest --watch --coverage=false  stores/index.spec.ts
+npm test
+npm run lint:fix
+npm run dtsgen
+npm test
+npm run lint:fix
+npm test
+npm run dtsgen
+oh-my-posh upgrade
+oh-my-posh upgrade --force
+cd dev/TheSustainables.CustomerPortal
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+code .
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+npm run dtsgen
+npm run dev
+npm test
+npm test -- -u
+npx jest --watch --coverage=false  utils/quotes/quotesHelpers.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false  utils/quotes/quotesHelpers.spec.ts
+npm run dtsgen
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd .\dev\EnergyShop.HomeQgo-v2\Api\
+dotnet run
+npm run dev
+npx jest --watch --coverage=false  final-request.spec.ts
+npm test
+npm run lint:fix
+npm test
+g com
+g pl
+g cob feature/ab#14570/add-all-e-heatpump-gtm-events
+code .\ClientApp\
+dotnet run
+g pl
+g com
+g pl
+g co feature/ab#14924/include-only-1-product
+g m main
+npm run dev
+npx jest --watch --coverage=false  pages/quotes/_id/payments/_idpayment/index.spec.ts
+npx jest --watch --coverage=false  pages/quotes/_id/payments/_idpayment/index.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false  pages/quotes/_id/payments/_idpayment/index.spec.ts
+code .\ClientApp\
+npm test
+npx jest --watch --coverage=false pages/quotes/index.spec.ts
+cd .\dev\Infrastructure-Terraform\
+g pl
+code .
+g cob feature/energy-shop-fast-retry-config
+g ca
+g ps
+git push --set-upstream origin feature/energy-shop-fast-retry-config
+cd .\dev\QUI\
+g rsh
+g com
+g pl
+code .
+code .
+start ..
+cd .\infra\
+ll
+cd .\test\
+terraform init
+terraform plan -var-file="../variables.tfvars" -lock=false -refresh=false
+ll
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..
+cd .\prod\
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+terraform init
+terraform plan -var-file="./variables.tfvars" -lock=false -refresh=false
+cd ..
+ll
+rmrf dist
+rmrf .\.storybook\
+pnpm run build-storybook
+pnpm install
+pnpm run build-storybook
+pnpm run storybook
+pnpm run build
+pnpm run build-storybook
+ll
+ll .\storybook-static\
+start .\storybook-static\
+az login
+g cob feat/deploy-storybook
+g com
+g rsh
+g clean -df
+g cob feat/skeletons
+pnpm run build.watch
+cd .\dev\QUI\
+pnpm run build.watch
+pnpm run storybook
+pnpm run storybook
+pnpm run generate
+pnpm run build.watch
+pnpm run storybook
+g com
+g pl
+dotnet run
+g cob feature/ab#14762/remove-panel-type-pt2
+cd .\ClientApp\
+npm test -- -u
+npm run lint:fix
+g co feat/deploy-storybook
+g pl
+cd .\dev\Infrastructure\
+g com
+g pl
+code .
+dotnet tool install --global dotnet-sonarscanner
+g com
+g pl
+npm ls http-proxy-middleware
+npm i
+ npm audit fix
+npm audit fix
+clear
+npm audit
+g cob feature/ab#14946/fix-vulnerabilities
+g ca
+npm audit fix --force
+rmrf .\node_modules\
+rmrf .\package-lock.json
+npm i
+npm i http-proxy-middleware@2.0.7
+npm ls http-proxy-middleware
+npm ls rollup
+npm ls axios
+npm ls ws
+npm ls braces
+npm ls micromatch
+npm ls micromatch@3.1.0
+npm ls braces@2.3.2
+npm ls ip
+g s
+npm i ip@2.0.1
+npm ls ip
+npm i
+npm ls ip
+npm i
+npm ls ip
+npm i
+npm ls ip
+npm ls axios
+npm ls ip
+npm i
+npm ls axios
+npm i
+npm ls axios
+npm run dev
+cd ..
+dotnet run
+npm i
+npm run dev
+npm i
+npm run dev
+ll
+rmrf .\node_modules\
+rmrf .\package-lock.json
+npm i
+rmrf .\node_modules\
+rmrf .\package-lock.json
+rmrf .\.nuxt\
+npm i
+npm run dev
+rmrf .\.nuxt\
+rmrf .\package-lock.json
+rmrf .\node_modules\
+npm i
+npm run dev
+code .
+npm run dev
+npm ls sass
+npm ls sass-loader
+rmrf .\package-lock.json
+rmrf .\node_modules\
+rmrf .\.nuxt\
+npm i
+npm run dev
+rmrf .\node_modules\
+rmrf .\.nuxt\
+rmrf .\package-lock.json
+npm i
+npm run dev
+npm i
+npm run dev
+npm i
+npm run dev
+npm i
+npm run dev
+rmrf .\.nuxt\
+npm run dev
+npm i
+npm run dev
+npm i
+npm run dev
+npm i
+npm run dev
+npx playwright install
+npm run dev
+npm ls braces
+npm i
+npm run dev
+npm ls ws
+npm i
+npm ls ws
+npm run dev
+npm ls rollup
+npm i
+npm ls rollup
+npm ls cross-spawn
+npm ls ua-parser-js
+npm ls http-proxy-middleware
+npm i
+npm run dev
+npm ls html-minifier
+npm ls lodash 
+npm ls nth-check
+npm i
+npm run dev
+npm ls vite
+npm ls micromatch
+npm i
+npm run dev
+npm test
+npx jest --watch --coverage=false components/product-refinement/roof-insulation/ProductRefinementRoofInsulationModelVisualizer.spec.ts
+npm test
+npm ls typescript
+npm run dtsgen
+npm run nuxt
+npm ls nuxt
+npm ls vue-template-compiler
+npm ls axios
+msbuild
+npm ls postcss
+npm i
+npm ls postcss@7
+npm ls postcss@^7
+npm ls postcss@7.0.39
+npm ls postcss@7
+npm i -D stylelint@^16
+npm ls postcss@7
+npm i -D stylelint-scss@^6
+npm ls postcss@7
+npm run lint
+npm i -D stylelint-scss@^4
+npm i -D stylelint@^15
+npm run lint:css
+npm i -D stylelint@^14
+npm i -D stylelint-scss@^5
+npm run lint:css
+npm i -D stylelint-config-standard@^36
+npm i -D stylelint-config-standard@^35
+npm i -D stylelint-config-standard@^34
+npm i -D stylelint@^13
+npm run lint:css
+npm i -D stylelint-config-standard@^36
+npm i -D stylelint-scss@^6
+npm i -D stylelint-scss@^5
+npm i -D stylelint-scss@^4
+npm i -D stylelint-scss@^3
+npm run lint:css
+npm i -D stylelint@^14
+npm run lint:css
+npm i -D postcss-scss
+npm unistall -D stylelint-scss
+npm uninstall -D stylelint-scss
+npm run lint:css
+npm i -D postcss-scss
+npm run lint:css
+npm i -D stylelint@^16
+npm run lint:css
+npm i -D stylelint-config-standard@^36
+npm run lint:css
+npm uninstall -D postcss-scss
+npm istall -D stylelint-scss
+npm i -D stylelint-scss
+npm run lint:css
+npm run lint:css -- --fix
+npm run lint:css
+npm uninstall -D stylelint stylelint-config-standard stylelint-scss
+npm run lint
+npm ls postcss
+npm ls postcss@7
+npm i
+npm uninstall -D postcss
+npm i
+npm run dev
+npm test
+npm ls elliptic
+npm ls cookie
+npm i
+npm ls send
+npm ls serve-static
+npm test
+npm run dev
+npm run dtsgen
+npm run lint:fix
+g pl
+npm i
+npm ls ip
+npm i
+npm ls @csstools/color-helpers
+npm ls caniuse-lite
+npm i
+rmrf .\.nuxt\
+npm i
+cd  .\dev\QuoteAPI\
+cd ..
+cd .\QuoteCreator\
+ll
+cd .\src\QuoteCreator.Web\npm_packages\
+ll
+npm ls caniuse-lite
+npm view caniuse-lite
+npm ls caniuse-lite
+npm i
+rmrf .\package-lock.json
+npm i
+rmrf .\package-lock.json
+rmrf .\.nuxt\
+rmrf .\node_modules\
+npm i
+npm ls @nuxt/bridge
+npm run dev
+az login
+dotnet run
+npm ls ip
+npm run dev
+dotnet restore --interactive
+dotnet run
+npm audit fix
+npm ls lodash.template
+npm ls lodash
+npm ls vue-template-compiler
+npm i
+npm run dev
+npm ls http-proxy-middleware
+g stash
+g cob feature/ab#14946/fix-vulnerabilities-pt2
+rmrf .\node_modules\
+rmrf .\package-lock.json
+rmrf .\.nuxt\
+npm i
+npm test
+npm run dtsgen
+npm ls lodash
+npm ls lodash.template
+npm ls thingies 
+npm ls elliptic
+npm ls caniuse-lite
+dotnet tool install --global dotnet-project-licenses
+cd ..
+dotnet-project-licenses -i ./
+cd ..
+ll
+dotnet-project-licenses -i .\EnergyShop.HomeQgo-v2\
+dotnet-project-licenses -i .\EnergyShop.HomeQgo-v2\Api\
+dotnet --info
+dotnet tool install --global dotnet-project-licenses
+cd .\EnergyShop.AbnAmro\
+cd ..
+cd .\EnergyShop.HomeQgo-v2\
+dotnet-project-licenses -i
+winget search "dotnet"
+winget install Microsoft.DotNet.Runtime.7 
+dotnet-project-licenses -i
+dotnet-project-licenses -i .
+dotnet-project-licenses -i . > licenses.txt
+start .
+npm install -g license-report
+npm run license-report
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run license-report
+license-report
+license-report > licenses.txt
+code .
+npm i check-licenses -g
+licenses
+license-report --only=prod,opt,peer,dev > licenses.txt
+license-report --only=prod,opt,peer,dev --package=package.json > licenses.txt
+licenses --help
+licenses --list
+license-report --help
+licenses --list --help
+licenses --list > licenses.txt
+license-report --help
+license-report --output=html
+license-report --output=html > licenses.html
+license-report --registry=https://pkgs.dev.azure.com/thesustainables/_packaging/thesustainables/npm/registry/
+license-report --output=json --registry=https://pkgs.dev.azure.com/thesustainables/_packaging/thesustainables/npm/registry/ > licenses.json
+npm ls spdx-license-ids
+npm ls type-fest
+npm ls mdn-data
+npm ls type-fest
+npm ls mdn-data
+g rsh 
+g clean -df
+g s
+rmrf ..\..\licenses.txt
+g com
+g pl
+g cob feature/ab#14947/replace-itext
+restore
+dotnet restore --interactive
+pwd
+npm run dev
+dotnet restore --interactive
+license-report --output=json --registry=https://pkgs.dev.azure.com/thesustainables/_packaging/thesustainables/npm/registry/ > licenses.json
+dotnet-project-licenses -i . > licenses.txt
+ll
+git commit --allow-empty -m "Trigger Build"
+g ps
+winget search "docker"
+winget --h
+winget show "docker"
+winget upgrade "docker"
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g s
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd ..
+g rs
+g pl
+g cob feature/ab#14944/sonar-cloud-issues
+code .
+npm run dev
+npm ls gsap
+license-report
+licenses --list > licenses.txt
+npm run dev
+dotnet run
+g co feature/ab#14947/replace-itext
+cd ..
+ll
+cd .\Domain.Tests\
+dotnet add package System.Drawing.Common --version 8.0.0
+g co feature/ab#14944/sonar-cloud-issues
+licenses --list > licenses.txt
+npm run dev
+cd ..
+cd .\Api\ClientApp\
+npx jest --watch --coverage=false solarPanelHelper.spec.ts
+npx jest --watch --coverage=false unit.spec.ts
+npm test
+npm test -- -u
+g pl
+npx jest --watch --coverage=false ProductRefinementHeatpump.spec.ts
+npx jest --watch --coverage=false init.spec.ts
+npx jest --watch --coverage=false createHouseFactsForm.spec.ts
+npx jest --watch --coverage=false useHeatpumpPc1.spec.ts
+npx jest --watch --coverage=false composables/useScan.spec.ts
+npm run dev
+npx jest --watch --coverage=false ./domain/pc1/heatpump/useHeatpumpPc1.spec.ts
+npx jest --watch --coverage=false ./domain/pc1/heatpump/useHeatpumpPc1.spec.ts
+npx jest --watch --coverage=false middleware/route-guard.ts
+npx jest --watch --coverage=false ./middleware/route-guard.spec.ts
+npx jest --watch --coverage=false ./domain/pc1/solar-panel/models/Pc1.spec.ts
+npx jest --watch --coverage=false ProductRefinementHeatpump.spec.ts
+npx jest --watch --coverage=false ./domain/pc1/solar-panel/models/Pc1.spec.ts
+npx jest --watch --coverage=false ProductRefinementSolarPanelModelVisualizer.spec.ts
+npx jest --watch --coverage=false ./domain/pc1/solar-panel/models/Pc1.spec.ts
+npx jest --watch ProductRefinementHeatpump.spec.ts
+npx jest --watch --coverage=false plugins/vee-validate.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false plugins/vee-validate.spec.ts
+cd ..
+dotnet restore --interactive
+npx jest --watch --coverage=false domain/house-facts/form-fields/houseProducts.spec.ts
+cd .\ClientApp\
+npx jest --watch --coverage=false domain/house-facts/form-fields/houseProducts.spec.ts
+g co
+g com
+g pl
+g cob feature/ab#14944/sonar-cloud-issues-pt2
+npm i sanitize-url
+npm install -S @braintree/sanitize-url
+npm install -D @types/sanitize-url
+npm install -S DOMPurify
+npm install -S dompurify
+npm run dev
+npm test
+npx jest --watch --coverage=false components/traffic-partner/thermosolutions/Logo.spec.ts
+npm test
+npm test -- -u
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+code .
+git commit --allow-empty -m "Trigger Build"
+g ps
+cd .\bin\ngrok\
+.\ngrok.exe http https://localhost:5052
+g cob feature/ab#14944/sonar-cloud-issues-pt3
+cd .\dev\Infrastructure\
+code .\localDev\
+g cob feature/ab#14944/sonar-cloud-issues-api-client
+npm run dev
+cd ..
+cd .\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+code .
+g co feature/ab#14944/sonar-cloud-issues-pt3
+az login
+npm run dev
+g co feature/ab#14944/sonar-cloud-issues-pt2
+g pl
+g cob
+g com
+g pl
+g cob feature/ab#14945/scanning-alerts
+g pl
+az login
+cd dev
+cd dev
+cd .\dev\EnergyShop.AbnAmro\
+g com
+g pl
+ll
+cd .\TheSustainables.EnergyShop.AbnAmro\ClientApp\
+npm run dev
+cd .\dev\EnergyShop.AbnAmro\
+dotnet restore --interactive
+npm run dev
+code .\TheSustainables.EnergyShop.AbnAmro\ClientApp\
+g co master
+dotnet restore --interactive
+npm run dev
+npm i
+g com
+g pl
+g cob feature/ab#14945/scanning-alerts-pt2
+g com
+g pl
+g co feature/ab#14945/scanning-alerts-pt2
+rmrf .\node_modules\
+rmrf .\package-lock.json
+g pl
+npm i
+npm run dev
+cd .\dev\Infrastructure\
+cd ..
+cd .\Infrastructure-Terraform\
+g com
+g pl
+code .
+g com
+g pl
+cd ..
+cd qui
+pnpm run build.watch
+cd dev\QUI\
+pnpm run storybook
+g co feature/ab#14944/sonar-cloud-issues-pt3
+g rsh
+g co feature/ab#14944/sonar-cloud-issues-pt3
+g cob feature/ab#14944/sonar-cloud-issues-api-client
+g co feature/ab#14944/sonar-cloud-issues-api-client
+code .
+g com
+g pl
+npm run dev
+g cob fix/advice-report-pdf
+code .
+licenses --list > licenses.txt
+g rsh
+cd ../..
+license-report
+dotnet-project-licenses -i . > licenses.txt
+start .
+cd .\dev\
+g clone git@github.com:TheSustainables/customer-journey-content-client.git
+cd .\customer-journey-auth-ui\
+cd ..
+cd .\customer-journey-content-client\
+npm link
+npm link @ts/customer-journey-content-client
+rmrf .\package-lock.json
+npm i
+npm audit fix
+g cob feature/ab#14946/fix-vulnerabilities
+g ca
+npm run dev
+code .
+npm run build
+npm run dev
+npm ls @types/node
+npm i
+npm run build
+npm run dev
+npm run build
+npm version patch
+npm version patch
+npm publish
+g com
+g pl
+g cob feature/ab#14946/fix-vulnerabilities-pt2
+npm ls gh-pages
+`
+npm ls semver
+npm i
+npm run build
+rmrf .\package-lock.json
+rmrf .\node_modules\
+npm i
+rmrf .\node_modules\
+rmrf .\package.json
+npm i
+nvm install 22
+rmrf .\node_modules\
+nvm use 22.11.0
+node -v
+cd .\dev\customer-journey-content-client\
+npm i
+npm run build
+npm unlink
+npm unlink @ts/customer-journey-content-client
+npm link
+npm run build
+npm i @types/jest -D
+npm run build
+npm i
+npm i @types/jest@latest -D
+npm run build
+npm i
+npm run build
+npm un @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm i typescript-eslint
+npm run build
+npx tsc -p tsconfig.json
+npm run build
+npm run lint
+npx eslint . --ext .js --ext .ts
+npx eslint . --ext .js --ext=.ts
+npx eslint . --ext=.ts
+npx eslint . --ext='.ts'
+npx eslint --ext=.ts ./src
+npm run lint
+npx eslint --help
+npm run lint
+npm run build
+    overrides: [`
+        {`
+            files: ["types/contentful.d.ts"],`
+            rules: {`
+                "import/named": "off",`
+            },`
+        },`
+    ],
+npm run build
+npm link
+npm link @ts/customer-journey-content-client
+npm run dev
+npm ls semver
+npm ls @babel/core
+npm test
+npm test -- -u
+npx jest --watch --coverage=false src/lib/content-module.spec.ts
+npm test
+npm i
+npm ls semver
+npm ls gh-pages
+npm i
+npm test
+g cob feature/ab#14944/fix-sonarcloud-issues
+npm test
+npm run build
+node -v
+npm i typescript-eslint -D
+npm run build
+npm test
+npm run build
+npm ls contentful
+npm ls dotenv
+licenses --list > licenses.txt
+npm test
+license-report
+npm run build
+npm i check-licenses -g
+licenses --list > licenses.txt
+npm ls lodash.isstring
+npm ls lodash.isstring
+npm run lint:fix
+npm run lint:fix
+npm i eslint-import-resolver-typescript -D
+npm run lint:fix
+npm run build`
+
+npm test
+npm run dev
+npx jest --watch --coverage=false src/lib/rich-text-to-html.spec.ts
+npm test
+npm version patch
+g ca
+npm publish
+g s
+node -v
+node -v
+npm run dev
+npm install -g gbunny
+g rsh
+rmrf .\node_modules\
+npm i
+npm run dev
+npm ls punycode
+g
+q
+g
+clear
+g merge master`
+
+code .
+npm run dev
+npx jest --watch --coverage=false
+npm i
+cd .\Api\ClientApp\
+npx jest --watch --coverage=false campaign.spec.ts
+npx jest --watch --coverage=false pc1.spec.ts
+npx jest --watch --coverage=false campaign.spec.ts
+npx jest --watch --coverage=false scan.spec.ts
+npx jest --watch --coverage=false ./api/scan.spec.ts
+npx jest --watch --coverage=false useStartAdvisorScanForm.spec.ts
+npx jest --watch --coverage=false ./store/advice.spec.ts
+npx jest --watch --coverage=false ./store/config.spec.ts
+npx jest --watch --coverage=false ./store/quote.spec.ts
+nvm list
+nvm use 18.20.4
+nvm -v
+node -v
+npx jest --watch --coverage=false ./store/quote.spec.ts
+rmrf .\node_modules\
+npm i
+npx jest --watch --coverage=false ./store/quote.spec.ts
+npx jest --watch --coverage=false ./utils/legacy-pc1-submission.spec.ts
+npm test
+npx jest --watch --coverage=false store/scan.spec.ts
+npx jest --watch --coverage=false domain/house-facts/createHouseFactsForm.spec.ts
+npm test
+npx jest --watch --coverage=false ./api/scan.spec.ts
+npx jest --watch --coverage=false ./plugins/init.spec.ts
+npx jest --watch --coverage=false ./mixins/ProductRefinementSummaryMixin.spec.ts
+npx jest --watch --coverage=false ./mixins/AdviceIntroMixin.spec.ts
+msbuild
+npx jest --watch --coverage=false ./utils/request-product.spec.ts
+npx jest --watch --coverage=false ./components/product-refinement/solar-panel/prep/ProductRefinementSolarPanelPrep.spec.ts
+npm test
+npm run lint:fix
+node -v
+npm run dev
+g pl
+g pl
+g com
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\
+g cob fix/ab#15285/thank-you-page
+dotnet restore --interactive
+dotnet run
+npm run dev
+rmrf .\node_modules\
+npm i
+npm run dev
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\
+code .\ClientApp\
+g com
+g pl
+npm run dev
+npm test
+npm run lint:fix
+cd .\ClientApp\
+npm test
+npx jest --watch --coverage=false ./components/campaign/CampaignBanner.spec.ts
+npx jest --watch --coverage=false ./pages/quotes/_id/final-request.spec.ts
+npm run lint:fix
+npm test
+npx jest --watch --coverage=false ./pages/quotes/_id/confirmation.spec.ts
+npx jest --watch --coverage=false ./pages/quotes/_id/index.spec.ts
+npx jest --watch --coverage=false ./pages/quotes/_id/payments/_idpayment/index.spec.ts
+npm test
+npm run lint:fix
+git commit --allow-empty -m "Trigger Build"
+g ps
+az login
+code .
+npx playwright --help
+npx playwright clear-cache
+g pl
+g cob feature/ab#14707/non-3d-model-link
+cd dev\QUI\
+g com
+g pl
+g rsh
+g clean -df
+code .
+pnpm run build.watch
+pnpm run storybook
+cd .\packages\QUI\
+pnpm run build.watch
+cd .\packages\QUI\
+pnpm run storybook
+g cob fix/qui-notification-grid
+g ca
+pnpm run build.watch
+pnpm link
+npm link
+pnpm link
+pnpm link --global
+npm link @ts/qui-vue
+npm run dev
+npm i
+npm run dev
+cd ..
+ll
+cd .\QUIVue\
+ll
+npm link @ts/qui-vue
+pnpm link --global
+npm link @ts/qui-vue
+npm run dev
+pnpm run build.watch
+cd ..
+cd .\QUI\
+pnpm run build.watch
+cd ..\QUIVue\
+pnpm run build
+npm i
+pnpm install
+cd ..
+pnpm install
+cd .\packages\QUIVue\
+pnpm install
+npm link @ts/quimsbuild
+npm link @ts/qui
+node -v
+cd ..\QUI\
+pnpm link --global
+pnpm run build
+pnpm run build.watch
+pnpm install
+g cadefineQuiNotification:q
+pnpm -v
+:q
+quit
+q
+pnpm install
+pnpm link --global
+npm link @ts/qui
+npm run dev
+pnpm run build.watch
+cd ..\QUIVue\
+pnpm install
+pnpm run build
+pnpm link --global @ts/qui-vue
+pnpm link --global
+pnpm install
+pnpm link --global
+pnpm link --global @ts/qui-vue
+npm link @ts/qui-vue
+npm run dev
+cd ..\QUI
+ll
+npm link @ts/qui
+pnpm link --global @ts/qui
+npm link @ts/qui
+cd ..
+pnpm installç
+pnpm install
+pnpm lerna run build
+npm run dev
+g pl
+g ca
+pnpm run build.watch
+pnpm run storybook
+cd ..\QUI
+ls
+cd .\QUI\
+pnpm run build.watch
+npm link @ts/qui
+pnpm link --global
+npm link
+npm link @ts/qui
+npm run dev
+cd ..\QUIVue\
+npm link
+npm link @ts/qui-vue
+npm run dev
+cd ..
+cd ..
+pnpm lerna run build
+pnpm lerna run publish-test
+npm unistall @ts/qui-vue
+npm uninstall @ts/qui-vue
+npm i @ts/qui
+npm run dev
+cd ..
+cd ..
+dotnet restore --interactive
+cd .\Api\
+dnr
+cd .\packages\QUI\
+npm link
+npm link @ts/qui
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm test -- -u
+lint
+npm run lint:fix
+git commit --allow-empty -m "Trigger Build"
+g ps
+g pl
+g ps
+npm uninstall @ts/qui
+cd ..\QUIVue\
+npm link
+npm i @ts/qui-vue
+npm link @ts/qui-vue
+npm run dev
+npm link @ts/qui-vue
+npm i @ts/qui-vue
+npm run dev
+npm i @ts/qui-vue@latest
+npm run dev
+npm i @ts/qui-vue@latest
+npm run dev
+g com
+npx jest --watch --coverage=false ./components/product-refinement/solar-panel/ProductRefinementSolarPanelPackageEditorRoofs.spec.ts
+g rsh
+g co feature/ab#14707/non-3d-model-link
+npx jest --watch --coverage=false ./components/product-refinement/solar-panel/ProductRefinementSolarPanelPackageEditor.spec.ts
+g com
+code .
+code .
+g com
+g cob feature/ab#14705/solar-panel-advice-with-initial-panels
+g ca
+g ps
+g com
+g pl
+g cob feature/ab#14709/update-initially-installed-panels-limit
+npm test
+cd .\ClientApp\
+npm test
+g cob feature/ab#15225/remove-emails
+npx jest --watch --coverage=false composables/usePage.spec.ts
+npm run dev
+g cob hotfix/active-campaign 1e9cbc45c4441888d1cd218d3b023dddbf970ec5
+g lg
+npm test
+g ca
+g com
+g b D hotfix/active-campaign
+g cob hotfix/active-campaign 1e9cbc45c4441888d1cd218d3b023dddbf970ec5
+g bD hotfix/active-campaign
+g cob hotfix/active-campaign 1e9cbc45c4441888d1cd218d3b023dddbf970ec5
+g lg
+g cherry-pick 91c04e34ac59496a63a80697d7600f8a7dd45b0e
+g ps
+git push --set-upstream origin hotfix/active-campaign
+g lg
+npm test
+npx jest --watch --coverage=false components/landing/LandingHero.spec.ts
+npm run lint:fix
+npm test
+npm test -- -u
+npm run dev
+g com
+cd ..
+dnr
+az login
+npm run dev
+g pl
+dnr
+npm i
+npm run dev
+npx jest --watch --coverage=false composables/useStartLeadScanForm.spec.ts
+npm run dev
+g pl
+g com
+npm run dev
+g pl
+npm run dev
+code .
+npm test
+npm test
+npx jest --watch --coverage=false domain/house-facts/createHouseFactsForm.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false AppDropdownField.spec.ts
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+cd dev/TheSustainables.CustomerPortal
+cd .\dev\CustomerPortal-v2\
+cd .\TheSustainables.CustomerPortal\ClientApp\
+g pl
+cd .\dev\CustomerPortal-v2\
+cd .\TheSustainables.CustomerPortal\ClientApp\
+g co feature/ab#13601-fix-quotecoparison-list-bug
+dnr
+cd ..
+dnr
+npm run dev
+az login
+g m main
+code .
+npm i
+dnr
+npm run dev
+cd .\dev\CustomerPortal-v2\
+cd .\TheSustainables.CustomerPortal\ClientApp\
+npm test
+npx jest --watch --coverage=false components/quotes/list/QuotesListProductBox.spec.ts
+npx jest --watch --coverage=false ./components/quotes/list/QuotesListProductTableComparisonRow.spec.ts
+npx jest --watch --coverage=false ./components/quotes/list/QuotesListProductBoxComparisonItem.spec.ts
+npx jest --watch --coverage=false ./composables/useQuoteComparisonListingItem.spec.ts
+npx jest --watch --coverage=false ./components/quotes/list/QuotesListProductTableComparisonRow.spec.ts
+msbuild
+npx jest --watch --coverage=false ./pages/quotes/_id/index.spec.ts
+npx jest --watch --coverage=false ./store/quote.spec.ts
+npm test
+npm run lint:fix
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm run dev
+g com
+g pl
+g cob feature/use-advice-adapter-for-general-advice
+g ca
+g com
+g co feature/ab#14707/non-3d-model-link-underlined
+g cob feature/ab#14707/non-3d-model-link-underlined
+g co feature/use-advice-adapter-for-general-advice
+g com
+g co feature/ab#14707/non-3d-model-link-underlined
+npmt est
+npm test
+g com
+g pl
+g cob feature/ab#14705/solar-panel-advice-with-initial-panels-feedback
+npx jest --watch --coverage=false ./domain/house-facts/createHouseFactsForm.spec.ts
+g com
+g pl
+g cob feature/ab#14705/solar-panel-advice-with-initial-panels-feedback-pt2
+g co feature/ab#15110
+g pl
+npx jest --watch --coverage=false ./domain/house-facts/createHouseFactsForm.spec.ts
+npm run lint:fix
+npm test
+npx jest --watch --coverage=false ./domain/house-facts/form-fields/boilerProductionYear.spec.ts 
+npm ls jest
+npx jest --watch --coverage=false ./domain/house-facts/form-fields/boilerProductionYear.spec.ts 
+npm test
+npx jest --watch --coverage=false ./domain/house-facts/form-fields/boilerProductionYear.spec.ts 
+npm test
+npx jest --watch --coverage=false ./domain/house-facts/form-fields/boilerProductionYear.spec.ts 
+npm test
+npx jest --watch --coverage=false ./domain/house-facts/form-fields/boilerProductionYear.spec.ts 
+g com
+g rsh
+g com
+g pl
+g cob feature/ab#15552/add-tracking
+npm run lint:fix
+cd .\dev\QUI\
+g com
+g pl
+code .
+cd .\dev\QUI\
+cd .\packages\QUI\
+pnpm run build.watch
+cd .\packages\QUI\
+pnpm run storybook
+pnpm install
+pnpm install
+pnpm run build.watch
+pnpm run storybook
+npx stencil build
+pnpm run build.watch
+pnpm run storybook
+g cob feature/hide-dropdown-placeholder
+g ca
+g com
+g pl
+npm i @ts/qui-vue@latest
+npm run dev
+g cob feature/update-qui
+g ca
+g ps
+ git push --set-upstream origin feature/update-qui
+g com
+g pl
+g cob feature/clean-up
+g ca
+g ps
+git push --set-upstream origin feature/clean-up
+g ca
+g p
+g ps
+npm test -- -u
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\ClientApp\
+code .
+g com
+g pl
+g co bugfix/fix-quotecomparison-redirect
+cd .\dev\CustomerPortal-v2\TheSustainables.CustomerPortal\
+npm run dev
+dnr
+g com
+g pl
+g co environment/without-fact-service
+cd ..
+dotnet restore --interactive
+g pl
+g rsh
+npx jest --watch --coverage=false ProductRefinementSummaryMixin.spec.ts
+cd .\Api\ClientApp\
+npx jest --watch --coverage=false ProductRefinementSummaryMixin.spec.ts
+g com
+g lg
+g com
+cd ..
+dotnet restore --interactive
+az login
+g lg
+g co 29915b4b
+dotnet restore --interactive
+cd .\Api\ClientApp\
+npm run dtsgen
+g com
+g cob fix/boiler-year-options
+g ca
+g ps
+git push --set-upstream origin fix/boiler-year-options
+g ps
+npm test
+lint
+npm run lint:fix
+az login
+g com
+g pl
+g m master
+npm i
+npm run dev
+dnr
+npm run dev
+cd .\bin\ngrok\
+.\ngrok.exe http https://localhost:5052
+npm test
+npx jest --watch --coverage=false store/advice.spec.ts
+npm run dtsgen
+npx jest --watch --coverage=false store/advice.spec.ts
+npx jest --watch --coverage=false api/scan.spec.ts
+npm test
+g cob feature/use-advice-adapter-for-general-advice-fe-cleanup
+g cob feature/use-advice-adapter-for-general-advice
+g co feature/use-advice-adapter-for-general-advice
+g co environment/without-fact-service
+npm run dtsgen
+g stash
+git apply
+g stash apply
+az login
+g stash
+g com
+g rsh
+g co environment/without-fact-service
+g stash pop
+npm run dtsgen
+g pl
+npm run dtsgen
+npm test
+npx jest --watch --coverage=false components/product-refinement/cavity-wall-insulation/ProductRefinementCavityWallInsulationModelVisualizer.spec.ts
+npm run dtsgen
+npx jest --watch --coverage=false components/product-refinement/cavity-wall-insulation/ProductRefinementCavityWallInsulationModelVisualizer.spec.ts
+npm test
+g stash drop
+npm test
+npm run dtsgen
+npx jest --watch --coverage=false components/product-refinement/cavity-wall-insulation/ProductRefinementCavityWallInsulationModelVisualizer.spec.ts
+npm run dtsgen
+npx jest --watch --coverage=false components/product-refinement/cavity-wall-insulation/ProductRefinementCavityWallInsulationModelVisualizer.spec.ts
+g pl
+npm test
+npx jest --watch --coverage=false mixins/ProductRefinementModelVisualizerMixin.spec.ts
+g pl
+g cob feature/refine-required-products
+az login
+dnr
+g stash show
+g stash show 0
+g stash show 1
+g stash show -h
+g stash show -p
+g rsh
+g stash drop
+g cob feature/solar-panel-pc1-without-fs
+npm run dtsgen
+cd dev/
+ll
+npm run dtsgen
+npmt est
+npm test
+npxmsbuild
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementSolarPanel.spec.ts
+npx jest --watch --coverage=false adapters/pc1/solar-panel/repositories/getRoofRefinementRepository.spec.ts
+npx jest --watch --coverage=false domain/pc1/solar-panel/models/SolarPanelPlacementConfigurator.spec.ts
+npx jest --watch --coverage=false domain/pc1/solar-panel/models/PackageEditor.spec.ts
+npx jest --watch --coverage=false domain/pc1/solar-panel/models/Pc1.spec.ts
+npm test
+g ps
+npx jest --watch --coverage=false components/product-refinement/solar-panel/ProductRefinementSolarPanelModelVisualizer.spec.ts`
+
+npx jest --watch --coverage=false utils/solarPanelHelper.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false ./components/product-refinement/ProductRefinementSolarPanelV2.spec.ts
+npx jest --watch --coverage=false ./components/product-refinement/ProductRefinementSolarPanel.spec.ts
+npm run dtsgen
+npm test
+npx jest ./components/product-refinement/ProductRefinementSolarPanel.spec.ts
+npx jest ./components/product-refinement/ProductRefinementSolarPanelsubmitLegacy2.spec.ts
+npx jest ./components/product-refinement/ProductRefinementSolarPanelV2.spec.ts
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npx jest ./components/product-refinement/ProductRefinementSolarPanelV2.spec.ts
+npx jest ./components/product-refinement/ProductRefinementSolarPanel.spec.ts
+npx jest --watch --coverage=false ./components/product-refinement/ProductRefinementSolarPanel.spec.ts
+npx jest --watch --coverage=false ./components/product-refinement/ProductRefinementSolarPanelV2.spec.ts
+npm run lint:fix
+g cob feature/floor-insulation-pc1-without-fs
+npm run dtsgen
+npm test
+npm run dtsgen
+g cob feature/roof-insulation-pc1-without-fs
+npm run dtsgen
+npm test
+npm test -- -u
+npm run dtsgen
+g cob feature/glass-pc1-without-fs
+npm run dtsgen
+npm test
+npm run dtsgen
+npm test
+g c -a
+g c --amend
+g cob feature/remove-fs
+g lg
+g cob feature/glass-pc1-without-fs
+g cob feature/remove-fs-service
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+g cob feature/glass-pc1-without-fs
+g co feature/glass-pc1-without-fs
+g cob feature/remove-fs-service
+g lg
+g bd feature/remove-fs-service
+g b -d feature/remove-fs-service
+g bd feature/remove-fs-service
+g b -D feature/remove-fs-service
+g cob feature/remove-fs-service
+g lg
+g co environment/without-fact-service
+g pl
+g b -D feature/remove-fs-service
+g cob feature/remove-fs-service
+g lg
+g co environment/without-fact-service
+g b -d feature/remove-fs-service
+g b -D feature/remove-fs-service
+g cob feature/remove-fs-service
+g m --squash feature/heatpump-pc1-without-fs
+g m feature/heatpump-pc1-without-fs --squash
+git merge --squash feature/heatpump-pc1-without-fs
+g co environment/without-fact-service
+g b -D feature/remove-fs-service
+g cob feature/remove-fs-service
+git merge --squash feature/heatpump-pc1-without-fs -m "feat: heatpump PC1 without fs" --no-ff
+git merge --squash feature/heatpump-pc1-without-fs -m "feat: heatpump PC1 without fs"
+g lg
+g co environment/without-fact-service
+g rsh
+g b -D feature/remove-fs-service
+g cob feature/remove-fs-service
+git merge --squash feature/heatpump-pc1-without-fs -m "feat: heatpump PC1 without fs"
+g c -a -m "feat: heatpump PC1 without fs"
+g c -A -m "feat: heatpump PC1 without fs"
+g rsh
+git merge --squash feature/heatpump-pc1-without-fs
+g rsh
+git merge --squash feature/heatpump-pc1-without-fs -m "feat: heatpump PC1 without fs" --no-ff
+git merge feature/heatpump-pc1-without-fs -m "feat: heatpump PC1 without fs" --no-ff
+g co environment/without-fact-service
+ll
+g bd feature/remove-fs-service
+g bD feature/remove-fs-service
+g cob feature/remove-fs-service
+g rebase -i
+g rebase -i feature/heatpump-pc1-without-fs
+g rebase --abort
+g rebase -i feature/heatpump-pc1-without-fs
+g rebase --abort
+az login
+npm run dtsgen
+npm run lint:fix
+npm test
+npx jest --watch --coverage=false pages/quote/_pc1.spec.ts
+npx jest --watch --coverage=false pages/quote/solar-panel-pc1-prep.spec.ts
+npx jest --watch --coverage=false components/advice/AdviceSummaryBox.spec.ts
+npx jest --watch --coverage=false utils/request-product.spec.ts
+npx jest --watch --coverage=false pages/continue-scan.spec.ts
+npx jest --watch --coverage=false utils/quote.spec.ts
+npx jest --watch --coverage=false utils/legacy-pc1-submission.spec.ts
+npm test
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementSolarPanel.vue
+npx jest --watch --coverage=false .\components\product-refinement\ProductRefinementSolarPanel.spec.ts
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementSolarPanel.spec.ts
+npx jest --watch --coverage=false components/house-details-intro/HouseDetailsIntro.spec.ts
+az login
+npx jest --watch --coverage=false store/quote.spec.ts
+npx jest --watch --coverage=false domain/campaign.spec.ts
+npx jest --watch --coverage=false components/product-refinement/cavity-wall-insulation/ProductRefinementCavityWallInsulationModelVisualizer.spec.ts
+npx jest --watch --coverage=false mixins/HouseFactsEnergyUsageMixin.spec.ts
+npx jest --watch --coverage=false pages/advice-report.spec.ts
+npm run lint:fix
+npx jest --watch --coverage=false mixins/ProductRefinementSummaryMixin.spec.ts
+cd dev
+ll
+cd .\aadb2c-infra-as-code\
+g cob
+g com
+code .
+g ol
+g pl
+cd ..
+g clone git@github.com:TheSustainables/ScanEditor.git
+cd .\ScanEditor\
+g rsh
+g clean -df
+g pl
+START .
+dotnet restore --interactive
+git commit --allow-empty -m "Trigger Build"
+g ps
+npx jest --watch --coverage=false mixins/AdviceIntroMixin.spec.ts
+az login
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementHeatpump.spec.ts
+npx jest --watch --coverage=false components/product-refinement/ProductRefinementSolarPanelV2.spec.ts
+npx jest --watch --coverage=false mixins/ProductRefinementSummaryMixin.spec.ts
+npx jest --watch --coverage=false store/quote.spec.ts
+npm run lint
+npm test
+npx jest --watch --coverage=false utils/legacy-pc1-submission.spec.ts
+npm test
+cd ..
+..
+npx jest --watch --coverage=false components/quote/QuoteProcessor.spec.ts
+npx jest --watch --coverage=false utils/legacy-pc1-submission.spec.ts
+npm test
+npx jest --watch --coverage=false utils/legacy-pc1-submission.spec.ts
+npm test
+npx jest --watch --coverage=false store/quote.spec.ts
+npx jest --watch --coverage=false  components/product-refinement/ProductRefinementSolarPanelV2.spec.ts
+npm test
+npm run lint:fix
+cd ..
+cd ..
+restore
+dotnet restore --interactive
+cd .\Api\ClientApp\
+npm test
+npm run dtsgen
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+code .
+g pl
+npm run dev
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+npm test -- -u
+g origin
+git origin
+git --help
+git remote -vv
+g ps
+cd .\bin\ngrok\
+ngrok http https://localhost:5052
+.\ngrok.exe http https://localhost:5052
+npx jest --watch --coverage=false store/quote.spec.ts
+npx jest --watch --coverage=false pages/quote/_pc1.spec.ts
+npm run lint:fix
+g remote -vv
+git remove -vv
+git remote -vv
+g ps
+npm run lint:fix
+npm test
+ll
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+ll
+git status
+g s
+git status
+g s
+git status
+git checkout master
+git status
+git reset --hard
+grh
+gs
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gs
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gs
+ll
+gl
+gpl
+gps
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gs
+glg
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+glog
+g lg
+git git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --oneline
+git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --oneline
+git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gs
+ga .\store\sss.ts
+gs
+gaa
+gs
+g restore store/aaa.js
+gs
+npm uninstall -g gbunny
+gs
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gs
+g restore store/aaa.js
+gs
+g reset store/aaa.js
+gs
+g reset store/advice.ts
+gs
+gca -m "daje"
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gca daje
+g commit -am "daje"
+gs
+g commit -am "daje2"
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gca
+gca "daje"
+g commit -a
+gca daje un poco
+gca
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gca
+g c
+gc
+gs
+gca
+glog
+gpl
+gs
+g clean --help
+g clean -i
+gs
+code $PROFILE
+ll
+g
+cd .\dev\EnergyShop.HomeQgo-v2\Api\ClientApp\
+gs
+code C:\Users\fabri\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
