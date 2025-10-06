@@ -14,7 +14,7 @@
             "style": "agnoster_short"
           },
           "template": "{{ .Path }} ",
-          "foreground": "#868686",
+          "foreground": "#a9a9a9",
           "type": "path",
           "style": "plain"
         },
@@ -28,7 +28,7 @@
             "fetch_worktree_count": true
           },
           "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ffa200>\uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }}</> ",
-          "foreground": "#464646",
+          "foreground": "#57c7ff",
           "type": "git",
           "style": "diamond"
         }
