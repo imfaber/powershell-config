@@ -6,7 +6,11 @@ function Remove { & rm @args -Force -Recurse }
 Set-Alias -Name rmrf -Value Remove
 
 # Grep
-Set-Alias -Name grep -Value findstr
+function Find {
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    $input | & findstr -i @args
+}
+Set-Alias -Name grep -Value Find
 
 # Neovim
 Set-Alias -Name vim -Value nvim
