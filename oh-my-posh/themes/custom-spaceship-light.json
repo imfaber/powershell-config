@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
-
     {
       "type": "prompt",
       "alignment": "left",
@@ -27,18 +26,11 @@
             "fetch_upstream_icon": true,
             "fetch_worktree_count": true
           },
-          "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ffa200>\uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }}</> ",
+          "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ffa200>\uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }}</> \n",
           "foreground": "#494949",
           "type": "git",
-          "style": "diamond"
-        }
-      ],
-      "newline": true
-    },
-    {
-      "type": "prompt",
-      "alignment": "left",
-      "segments": [
+          "style": "plain"
+        },
         {
           "properties": {
             "cache_duration": "none"
@@ -49,7 +41,7 @@
           "style": "plain"
         }
       ],
-      "newline": true
+      "newline": false
     }
   ],
   "version": 3,
