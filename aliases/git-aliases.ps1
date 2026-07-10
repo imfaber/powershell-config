@@ -95,7 +95,7 @@ $diff
 
                     $generated = $response.choices[0].message.content.Trim()
                     Write-Host "Suggested : $generated" -ForegroundColor Green
-                    $confirm = Read-Host "Accept? [Y=yes / E=edit / N=enter manually]"
+                    $confirm = Read-Host "Accept? [Y=yes (default) / E=edit / N=enter manually]"
 
                     switch -Regex ($confirm.Trim().ToLower()) {
                         '^$|^y' { $Message = $generated }
@@ -123,6 +123,7 @@ $diff
         }
     }
 
+    & git add --all
     & git commit -av -m $Message
 }
 New-Alias -Name gca -Value Get-GitCommitAll -Force -Option AllScope
