@@ -53,6 +53,7 @@ function Get-GitCommitAll {
     param(
         [string]$Message
     )
+    & git add --all
 
     if (-not $Message -or $Message -eq "") {
         $apiKey = $env:GEMINI_API_KEY
@@ -138,7 +139,6 @@ $diff
         }
     }
 
-    & git add --all
     & git commit -av -m $Message
 }
 New-Alias -Name gca -Value Get-GitCommitAll -Force -Option AllScope
