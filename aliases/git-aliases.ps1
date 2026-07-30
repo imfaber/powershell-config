@@ -43,8 +43,8 @@ New-Alias -Name gci -Value Get-GitCommitInteractive -Force -Option AllScope
 <#
 .SYNOPSIS
     Stages all tracked changes and commits with a message.
-    When no message is given, attempts to auto-generate one via the OpenAI API
-    in conventional commit format (requires $env:OPENAI_API_KEY).
+    When no message is given, attempts to auto-generate one via the Gemini API
+    in conventional commit format (requires $env:GEMINI_API_KEY).
 .EXAMPLE
     gca "fix: correct null-check in parser"
     gca          # auto-generates a message, then prompts to accept/edit/skip
@@ -55,7 +55,8 @@ function Get-GitCommitAll {
     )
 
     if (-not $Message -or $Message -eq "") {
-        $apiKey = $env:GITHUB_TOKEN
+        $apiKey = $env:GEMINI_API_KEY
+        if ($apiKey) { $apiKey = $apiKey.Trim() }
         if ($apiKey) {
             # Capture what will be committed (-a stages all tracked changes)
             $diff = & git diff HEAD 2>$null
@@ -81,19 +82,28 @@ Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
 $diff
 "@
                     $body = @{
-                        model    = "gpt-4o-mini"
-                        messages = @(@{ role = "user"; content = $prompt })
-                        max_tokens  = 80
-                        temperature = 0.3
-                    } | ConvertTo-Json -Depth 5
+
+                        contents = @(
+                            @{
+                                parts = @(
+                                    @{ text = $prompt }
+                                )
+                            }
+                        )
+                    } | ConvertTo-Json -Depth 6
 
                     $response = Invoke-RestMethod `
-                        -Uri "https://models.inference.ai.azure.com/chat/completions" `
+                        -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" `
                         -Method Post `
-                        -Headers @{ Authorization = "Bearer $apiKey"; "Content-Type" = "application/json" } `
+                        -Headers @{ "X-goog-api-key" = $apiKey } `
+                        -ContentType "application/json" `
                         -Body $body
 
-                    $generated = $response.choices[0].message.content.Trim()
+                    $generated = $response.candidates[0].content.parts[0].text.Trim()
+                    if ($generated) {
+                        $generated = ($generated -split "`r?`n" | Where-Object { $_ -and $_.Trim() -ne "" } | Select-Object -First 1).Trim()
+                        $generated = $generated -replace '^[`"''\s]+|[`"''\s]+$',''
+                    }
                     Write-Host "Suggested : $generated" -ForegroundColor Green
                     $confirm = Read-Host "Accept? [Y=yes (default) / E=edit / N=enter manually]"
 
@@ -109,7 +119,12 @@ $diff
                     }
                 }
                 catch {
-                    Write-Host "AI generation failed: $($_.Exception.Message)" -ForegroundColor Yellow
+                    if ($_.Exception.Response -and [int]$_.Exception.Response.StatusCode -eq 401) {
+                        Write-Host "AI generation failed: 401 Unauthorized. Check `$env:GEMINI_API_KEY and API key restrictions." -ForegroundColor Yellow
+                    }
+                    else {
+                        Write-Host "AI generation failed: $($_.Exception.Message)" -ForegroundColor Yellow
+                    }
                 }
             }
         }
