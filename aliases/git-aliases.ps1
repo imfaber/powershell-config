@@ -143,6 +143,95 @@ $diff
 }
 New-Alias -Name gca -Value Get-GitCommitAll -Force -Option AllScope
 
+# <#
+# .SYNOPSIS
+#     Stages all tracked changes and commits with a message.
+#     When no message is given, attempts to auto-generate one via the OpenAI API
+#     in conventional commit format (requires $env:OPENAI_API_KEY).
+# .EXAMPLE
+#     gca "fix: correct null-check in parser"
+#     gca          # auto-generates a message, then prompts to accept/edit/skip
+# #>
+# function Get-GitCommitAll {
+#     param(
+#         [string]$Message
+#     )
+
+#     & git add --all
+
+#     if (-not $Message -or $Message -eq "") {
+#         $apiKey = $env:GITHUB_TOKEN
+#         if ($apiKey) {
+#             # Capture what will be committed (-a stages all tracked changes)
+#             $diff = & git diff HEAD 2>$null
+#             if (-not $diff) { $diff = & git diff --cached 2>$null }
+
+#             if ($diff) {
+#                 # Truncate to avoid exceeding token limits
+#                 $maxChars = 8000
+#                 if ($diff.Length -gt $maxChars) {
+#                     $diff = $diff.Substring(0, $maxChars) + "`n... (diff truncated)"
+#                 }
+
+#                 Write-Host "Generating commit message..." -ForegroundColor Cyan
+#                 try {
+#                     $prompt = @"
+# Generate a single git commit message in conventional commit format for the following diff.
+# Format: type(scope): short description
+# Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+# - The scope is optional; omit it if not clearly applicable.
+# - Keep the description under 72 characters total.
+# - Output only the commit message line, nothing else.
+
+# $diff
+# "@
+#                     $body = @{
+#                         model    = "gpt-4o-mini"
+#                         messages = @(@{ role = "user"; content = $prompt })
+#                         max_tokens  = 80
+#                         temperature = 0.3
+#                     } | ConvertTo-Json -Depth 5
+
+#                     $response = Invoke-RestMethod `
+#                         -Uri "https://models.inference.ai.azure.com/chat/completions" `
+#                         -Method Post `
+#                         -Headers @{ Authorization = "Bearer $apiKey"; "Content-Type" = "application/json" } `
+#                         -Body $body
+
+#                     $generated = $response.choices[0].message.content.Trim()
+#                     Write-Host "Suggested : $generated" -ForegroundColor Green
+#                     $confirm = Read-Host "Accept? [Y=yes (default) / E=edit / N=enter manually]"
+
+#                     switch -Regex ($confirm.Trim().ToLower()) {
+#                         '^$|^y' { $Message = $generated }
+#                         '^e'    {
+#                             Write-Host "Editing (clear and retype, or press Enter to keep):" -ForegroundColor Cyan
+#                             Write-Host "  $generated" -ForegroundColor DarkGray
+#                             $edited = Read-Host -Prompt "Commit message"
+#                             $Message = if ($edited) { $edited } else { $generated }
+#                         }
+#                         default { <# fall through to manual prompt below #> }
+#                     }
+#                 }
+#                 catch {
+#                     Write-Host "AI generation failed: $($_.Exception.Message)" -ForegroundColor Yellow
+#                 }
+#             }
+#         }
+
+#         if (-not $Message -or $Message -eq "") {
+#             $Message = Read-Host -Prompt "Commit message"
+#             if (-not $Message -or $Message -eq "") {
+#                 Write-Host "Aborting commit: empty message" -ForegroundColor Yellow
+#                 return
+#             }
+#         }
+#     }
+
+#     & git commit -av -m $Message
+# }
+# New-Alias -Name gca -Value Get-GitCommitAll -Force -Option AllScope
+
 <#
 .SYNOPSIS
     Stages specific files or paths.
