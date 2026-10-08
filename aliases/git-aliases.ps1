@@ -65,7 +65,7 @@ function Get-GitCommitAll {
 
             if ($diff) {
                 # Truncate to avoid exceeding token limits
-                $maxChars = 8000
+                $maxChars = 4000
                 if ($diff.Length -gt $maxChars) {
                     $diff = $diff.Substring(0, $maxChars) + "`n... (diff truncated)"
                 }
