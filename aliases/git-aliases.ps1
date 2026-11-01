@@ -65,7 +65,7 @@ function Get-GitCommitAll {
 
             if ($diff) {
                 # Truncate to avoid exceeding token limits
-                $maxChars = 4000
+                $maxChars = 8000
                 if ($diff.Length -gt $maxChars) {
                     $diff = $diff.Substring(0, $maxChars) + "`n... (diff truncated)"
                 }
@@ -83,22 +83,54 @@ Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
 $diff
 "@
                     $body = @{
-
-                        contents = @(
+                        contents         = @(
                             @{
                                 parts = @(
                                     @{ text = $prompt }
                                 )
                             }
                         )
+                        generationConfig = @{
+                            temperature     = 0.2
+                            maxOutputTokens = 100
+                        }
                     } | ConvertTo-Json -Depth 6
 
-                    $response = Invoke-RestMethod `
-                        -Uri "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" `
-                        -Method Post `
-                        -Headers @{ "X-goog-api-key" = $apiKey } `
-                        -ContentType "application/json" `
-                        -Body $body
+                    # gemini-flash-latest is a moving alias that is frequently
+                    # overloaded (503); pin stable models and fall back when needed.
+                    $models = @('gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-flash-lite-latest')
+                    if ($env:GEMINI_MODEL) { $models = @($env:GEMINI_MODEL) + $models | Select-Object -Unique }
+
+                    $response = $null
+                    foreach ($model in $models) {
+                        for ($attempt = 1; $attempt -le 2; $attempt++) {
+                            try {
+                                $response = Invoke-RestMethod `
+                                    -Uri "https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent" `
+                                    -Method Post `
+                                    -Headers @{ "X-goog-api-key" = $apiKey } `
+                                    -ContentType "application/json" `
+                                    -Body $body `
+                                    -TimeoutSec 15
+                                break
+                            }
+                            catch {
+                                $status = if ($_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 0 }
+                                $retryable = $status -eq 0 -or $status -in 429, 500, 502, 503, 504
+                                if (-not $retryable) { throw }
+                                if ($attempt -lt 2) {
+                                    Start-Sleep -Seconds 2
+                                    continue
+                                }
+                                break   # fall back to the next model
+                            }
+                        }
+                        if ($response) { break }
+                    }
+
+                    if (-not $response) {
+                        throw "All Gemini models are currently unavailable. Try again shortly."
+                    }
 
                     $generated = $response.candidates[0].content.parts[0].text.Trim()
                     if ($generated) {
