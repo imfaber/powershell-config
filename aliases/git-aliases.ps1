@@ -128,14 +128,16 @@ $Diff
     }
 }
 
-function Select-GitCommitFiles {
+function Select-GitChangedFiles {
     param(
         [Parameter(Mandatory)][object[]]$Files,
-        [string[]]$Deselected = @()
+        [string[]]$Deselected = @(),
+        [string]$Title = 'Select files to commit:',
+        [string]$ConfirmLabel = 'commit'
     )
 
     if ([Console]::IsInputRedirected -or [Console]::IsOutputRedirected) {
-        throw "File selection needs an interactive console. Use -All to commit every changed file."
+        throw "File selection needs an interactive console. Use -All to process every changed file."
     }
 
     $isSelected = @{}
@@ -147,7 +149,7 @@ function Select-GitCommitFiles {
     $height = [Math]::Max(1, [Math]::Min($Files.Count, [Console]::WindowHeight - 6))
     $pathWidth = [Math]::Max(4, $width - 10)
 
-    Write-Host 'Select files to commit:' -ForegroundColor Cyan
+    Write-Host $Title -ForegroundColor Cyan
     $blockTop = [Console]::CursorTop
     $cancelled = $false
     $done = $false
@@ -162,7 +164,7 @@ function Select-GitCommitFiles {
             [Console]::SetCursorPosition(0, $blockTop)
 
             $count = @($Files | Where-Object { $isSelected[$_.Path] }).Count
-            $title = "  $count/$($Files.Count) selected   Up/Down move   Space toggle   A all   Enter commit   Esc cancel"
+            $title = "  $count/$($Files.Count) selected   Up/Down move   Space toggle   A all   Enter $ConfirmLabel   Esc cancel"
             if ($title.Length -gt $width) { $title = $title.Substring(0, $width) }
             Write-Host $title.PadRight($width) -ForegroundColor DarkGray
 
@@ -305,7 +307,7 @@ function Get-GitCommit {
         $selected = @($files | ForEach-Object { $_.Path })
     }
     else {
-        $choice = Select-GitCommitFiles -Files $files -Deselected $remembered
+        $choice = Select-GitChangedFiles -Files $files -Deselected $remembered
         if ($choice.Cancelled) {
             Write-Host 'Commit cancelled.' -ForegroundColor Yellow
             return
@@ -608,15 +610,134 @@ New-Alias -Name gr -Value Get-GitRemote -Force -Option AllScope
 
 <#
 .SYNOPSIS
-    Hard-resets the working tree and index to a commit.
-    WARNING: discards all uncommitted changes.
+    Discards local changes for the files you select, restoring them to a commit.
+    Files you leave unselected are remembered per repository.
+    WARNING: discarding is irreversible, especially for untracked files.
 .EXAMPLE
-    grsh HEAD        # discard all local changes
-    grsh HEAD~1      # reset to the previous commit
-    grsh abc1234     # reset to a specific commit
+    grsh             # pick files to discard, restoring them to HEAD
+    grsh HEAD~1      # pick files to discard, restoring them to HEAD~1
+    grsh -All        # discard every tracked change (classic hard reset)
+    grsh -Forget     # clear the remembered unselected files
 #>
-function Get-GitResetHard { & git reset --hard $args }
-New-Alias -Name grsh -Value Get-GitResetHard
+function Get-GitResetHard {
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0)]
+        [string]$Commit = 'HEAD',
+        [switch]$All,
+        [switch]$Forget,
+        [switch]$Force
+    )
+
+    $root = & git rev-parse --show-toplevel 2>$null
+    if ($LASTEXITCODE -ne 0 -or -not $root) {
+        Write-Host 'Not inside a git repository.' -ForegroundColor Yellow
+        return
+    }
+
+    $statePath = & git -C $root rev-parse --git-path git-reset-unselected
+    if (-not [System.IO.Path]::IsPathRooted($statePath)) {
+        $statePath = Join-Path $root $statePath
+    }
+    $statePath = [System.IO.Path]::GetFullPath($statePath)
+
+    if ($Forget) {
+        Remove-Item -LiteralPath $statePath -ErrorAction SilentlyContinue
+        Write-Host 'Cleared remembered unselected files.' -ForegroundColor Cyan
+        return
+    }
+
+    & git -C $root rev-parse --verify --quiet "$Commit^{commit}" | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Unknown commit: $Commit" -ForegroundColor Red
+        return
+    }
+
+    if ($All) {
+        & git -C $root reset --hard $Commit
+        return
+    }
+
+    $raw = (& git -C $root status --porcelain=v1 -z --untracked-files=all) -join ''
+    $files = @()
+    if ($raw) {
+        $parts = $raw -split "`0"
+        for ($i = 0; $i -lt $parts.Count; $i++) {
+            $entry = $parts[$i]
+            if (-not $entry) { continue }
+            $status = $entry.Substring(0, 2)
+            $path = $entry.Substring(3)
+            $originalPath = $null
+            if ($entry[0] -eq 'R' -or $entry[0] -eq 'C') {
+                $originalPath = $parts[++$i]
+            }
+            $files += [pscustomobject]@{
+                Status       = $status
+                Path         = $path
+                OriginalPath = $originalPath
+            }
+        }
+    }
+
+    if ($files.Count -eq 0) {
+        Write-Host 'Nothing to discard, working tree clean.' -ForegroundColor Yellow
+        return
+    }
+
+    $remembered = @()
+    if (Test-Path -LiteralPath $statePath) {
+        $remembered = @(Get-Content -LiteralPath $statePath | Where-Object { $_ })
+    }
+
+    $choice = Select-GitChangedFiles -Files $files -Deselected $remembered -Title 'Select files to discard:' -ConfirmLabel 'discard'
+    if ($choice.Cancelled) {
+        Write-Host 'Discard cancelled.' -ForegroundColor Yellow
+        return
+    }
+    $selected = @($choice.Paths)
+
+    # Remember what was left unselected, pruning paths that no longer changed.
+    $deselected = @($files | Where-Object { $selected -notcontains $_.Path } | ForEach-Object { $_.Path })
+    if ($deselected.Count -gt 0) {
+        Set-Content -LiteralPath $statePath -Value $deselected -Encoding utf8
+    }
+    elseif (Test-Path -LiteralPath $statePath) {
+        Remove-Item -LiteralPath $statePath -ErrorAction SilentlyContinue
+    }
+
+    if ($selected.Count -eq 0) {
+        Write-Host 'No files selected, nothing to discard.' -ForegroundColor Yellow
+        return
+    }
+
+    if (-not $Force) {
+        $answer = Read-Host "Discard changes in $($selected.Count) file(s) and restore them to $Commit? [y/N]"
+        if ($answer.Trim().ToLower() -notin @('y', 'yes')) {
+            Write-Host 'Discard cancelled.' -ForegroundColor Yellow
+            return
+        }
+    }
+
+    # Untracked files have no entry in the target commit, so delete them.
+    $selectedEntries = @($files | Where-Object { $selected -contains $_.Path })
+    $untracked = @($selectedEntries | Where-Object { $_.Status -eq '??' } | ForEach-Object { $_.Path })
+    if ($untracked.Count -gt 0) {
+        & git --literal-pathspecs -C $root clean -f -d -- $untracked
+    }
+
+    # Restore tracked files in both index and working tree. Renames need both sides.
+    $tracked = @($selectedEntries | Where-Object { $_.Status -ne '??' } | ForEach-Object {
+            $_.Path
+            if ($_.Status[0] -eq 'R' -and $_.OriginalPath) { $_.OriginalPath }
+        })
+    if ($tracked.Count -gt 0) {
+        & git --literal-pathspecs -C $root restore --source=$Commit --staged --worktree -- $tracked
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host 'Failed to discard the selected files.' -ForegroundColor Red
+        }
+    }
+}
+New-Alias -Name grsh -Value Get-GitResetHard -Force -Option AllScope
 
 <#
 .SYNOPSIS
