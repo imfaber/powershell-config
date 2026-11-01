@@ -21,14 +21,340 @@ New-Alias -Name g -Value Get-Git -Force -Option AllScope
 function Get-GitStatus { & git status -sb $args }
 New-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
 
+function Get-GitGeneratedMessage {
+    param([string]$Diff)
+
+    $apiKey = $env:GEMINI_API_KEY
+    if ($apiKey) { $apiKey = $apiKey.Trim() }
+    if (-not $apiKey -or -not $Diff) { return $null }
+
+    # Truncate to avoid exceeding token limits
+    $maxChars = 8000
+    if ($Diff.Length -gt $maxChars) {
+        $Diff = $Diff.Substring(0, $maxChars) + "`n... (diff truncated)"
+    }
+
+    Write-Host "Generating commit message..." -ForegroundColor Cyan
+    try {
+        $prompt = @"
+Generate a single git commit message in conventional commit format for the following diff.
+Format: type(scope): short description
+Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
+- The scope is optional; omit it if not clearly applicable.
+- Keep the description under 72 characters total.
+- Output only the commit message line, nothing else.
+
+$Diff
+"@
+        $body = @{
+            contents         = @(
+                @{
+                    parts = @(
+                        @{ text = $prompt }
+                    )
+                }
+            )
+            generationConfig = @{
+                temperature     = 0.2
+                maxOutputTokens = 100
+            }
+        } | ConvertTo-Json -Depth 6
+
+        # gemini-flash-latest is a moving alias that is frequently
+        # overloaded (503); pin stable models and fall back when needed.
+        $models = @('gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-flash-lite-latest')
+        if ($env:GEMINI_MODEL) { $models = @($env:GEMINI_MODEL) + $models | Select-Object -Unique }
+
+        $response = $null
+        foreach ($model in $models) {
+            for ($attempt = 1; $attempt -le 2; $attempt++) {
+                try {
+                    $response = Invoke-RestMethod `
+                        -Uri "https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent" `
+                        -Method Post `
+                        -Headers @{ "X-goog-api-key" = $apiKey } `
+                        -ContentType "application/json" `
+                        -Body $body `
+                        -TimeoutSec 15
+                    break
+                }
+                catch {
+                    $status = if ($_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 0 }
+                    $retryable = $status -eq 0 -or $status -in 429, 500, 502, 503, 504
+                    if (-not $retryable) { throw }
+                    if ($attempt -lt 2) {
+                        Start-Sleep -Seconds 2
+                        continue
+                    }
+                    break   # fall back to the next model
+                }
+            }
+            if ($response) { break }
+        }
+
+        if (-not $response) {
+            throw "All Gemini models are currently unavailable. Try again shortly."
+        }
+
+        $generated = $response.candidates[0].content.parts[0].text.Trim()
+        if (-not $generated) { return $null }
+
+        $generated = ($generated -split "`r?`n" | Where-Object { $_ -and $_.Trim() -ne "" } | Select-Object -First 1).Trim()
+        $generated = $generated -replace '^[`"''\s]+|[`"''\s]+$', ''
+
+        Write-Host "Suggested : $generated" -ForegroundColor Green
+        $confirm = Read-Host "Accept? [Y=yes (default) / E=edit / N=enter manually]"
+
+        switch -Regex ($confirm.Trim().ToLower()) {
+            '^$|^y' { return $generated }
+            '^e' {
+                Write-Host "Editing (clear and retype, or press Enter to keep):" -ForegroundColor Cyan
+                Write-Host "  $generated" -ForegroundColor DarkGray
+                $edited = Read-Host -Prompt "Commit message"
+                if ($edited) { return $edited }
+                return $generated
+            }
+            default { return $null }
+        }
+    }
+    catch {
+        if ($_.Exception.Response -and [int]$_.Exception.Response.StatusCode -eq 401) {
+            Write-Host "AI generation failed: 401 Unauthorized. Check `$env:GEMINI_API_KEY and API key restrictions." -ForegroundColor Yellow
+        }
+        else {
+            Write-Host "AI generation failed: $($_.Exception.Message)" -ForegroundColor Yellow
+        }
+        return $null
+    }
+}
+
+function Select-GitCommitFiles {
+    param(
+        [Parameter(Mandatory)][object[]]$Files,
+        [string[]]$Deselected = @()
+    )
+
+    if ([Console]::IsInputRedirected -or [Console]::IsOutputRedirected) {
+        throw "File selection needs an interactive console. Use -All to commit every changed file."
+    }
+
+    $isSelected = @{}
+    foreach ($f in $Files) { $isSelected[$f.Path] = -not ($Deselected -contains $f.Path) }
+
+    $cursor = 0
+    $offset = 0
+    $width = [Math]::Max(20, [Console]::WindowWidth - 1)
+    $height = [Math]::Max(1, [Math]::Min($Files.Count, [Console]::WindowHeight - 6))
+    $pathWidth = [Math]::Max(4, $width - 10)
+
+    Write-Host 'Select files to commit:' -ForegroundColor Cyan
+    $blockTop = [Console]::CursorTop
+    $cancelled = $false
+    $done = $false
+    $cursorVisible = [Console]::CursorVisible
+
+    try {
+        [Console]::CursorVisible = $false
+        while (-not $done) {
+            if ($cursor -lt $offset) { $offset = $cursor }
+            if ($cursor -ge $offset + $height) { $offset = $cursor - $height + 1 }
+
+            [Console]::SetCursorPosition(0, $blockTop)
+
+            $count = @($Files | Where-Object { $isSelected[$_.Path] }).Count
+            $title = "  $count/$($Files.Count) selected   Up/Down move   Space toggle   A all   Enter commit   Esc cancel"
+            if ($title.Length -gt $width) { $title = $title.Substring(0, $width) }
+            Write-Host $title.PadRight($width) -ForegroundColor DarkGray
+
+            for ($row = 0; $row -lt $height; $row++) {
+                $i = $offset + $row
+                if ($i -ge $Files.Count) {
+                    Write-Host (' ' * $width)
+                    continue
+                }
+
+                $file = $Files[$i]
+                $checked = [bool]$isSelected[$file.Path]
+
+                if ($i -eq $cursor) { Write-Host '>' -NoNewline -ForegroundColor Cyan }
+                else { Write-Host ' ' -NoNewline }
+                Write-Host ' ' -NoNewline
+                if ($checked) { Write-Host '[x]' -NoNewline -ForegroundColor Green }
+                else { Write-Host '[ ]' -NoNewline -ForegroundColor DarkGray }
+                Write-Host ' ' -NoNewline
+
+                $color = switch ($file.Status.Substring(0, 1)) {
+                    ' ' { 'Yellow' }
+                    '?' { 'DarkGray' }
+                    'A' { 'Green' }
+                    'D' { 'Red' }
+                    'R' { 'Cyan' }
+                    'C' { 'Cyan' }
+                    'U' { 'Magenta' }
+                    default { 'Yellow' }
+                }
+                Write-Host $file.Status.PadRight(2) -NoNewline -ForegroundColor $color
+                Write-Host ' ' -NoNewline
+
+                $text = $file.Path
+                if ($text.Length -gt $pathWidth) {
+                    $text = '...' + $text.Substring($text.Length - ($pathWidth - 3))
+                }
+                Write-Host $text -NoNewline -ForegroundColor $(if ($checked) { 'White' } else { 'DarkGray' })
+                Write-Host (' ' * ($pathWidth - $text.Length))
+            }
+
+            $key = [Console]::ReadKey($true)
+            switch ($key.Key) {
+                'UpArrow' { if ($cursor -gt 0) { $cursor-- } }
+                'DownArrow' { if ($cursor -lt $Files.Count - 1) { $cursor++ } }
+                'Spacebar' { $isSelected[$Files[$cursor].Path] = -not $isSelected[$Files[$cursor].Path] }
+                'Enter' { $done = $true }
+                'Escape' { $cancelled = $true; $done = $true }
+                default {
+                    switch ($key.KeyChar) {
+                        'k' { if ($cursor -gt 0) { $cursor-- } }
+                        'j' { if ($cursor -lt $Files.Count - 1) { $cursor++ } }
+                        { $_ -in 'a', 'A' } {
+                            $allChecked = @($Files | Where-Object { -not $isSelected[$_.Path] }).Count -eq 0
+                            foreach ($f in $Files) { $isSelected[$f.Path] = -not $allChecked }
+                        }
+                        { $_ -in 'q', 'Q' } { $cancelled = $true; $done = $true }
+                    }
+                }
+            }
+        }
+    }
+    finally {
+        [Console]::CursorVisible = $cursorVisible
+        [Console]::SetCursorPosition(0, $blockTop)
+        for ($row = 0; $row -le $height; $row++) { Write-Host (' ' * $width) }
+        [Console]::SetCursorPosition(0, $blockTop)
+    }
+
+    return [pscustomobject]@{
+        Cancelled = $cancelled
+        Paths     = @($Files | Where-Object { $isSelected[$_.Path] } | ForEach-Object { $_.Path })
+    }
+}
+
 <#
 .SYNOPSIS
-    Opens the commit editor with verbose diff output.
+    Commits only the files you select, remembering files you leave unselected.
+    The AI-generated message is based on the selected files' diff only.
 .EXAMPLE
-    gc
-    gc --amend
+    gc          # pick files interactively, then commit
+    gc "feat: add selective commit"
+    gc -All     # commit every changed file
+    gc -Forget  # clear the remembered unselected files
 #>
-function Get-GitCommit { & git commit -ev $args }
+function Get-GitCommit {
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0)]
+        [string]$Message,
+        [switch]$All,
+        [switch]$Forget
+    )
+
+    $root = & git rev-parse --show-toplevel 2>$null
+    if ($LASTEXITCODE -ne 0 -or -not $root) {
+        Write-Host 'Not inside a git repository.' -ForegroundColor Yellow
+        return
+    }
+
+    $statePath = & git -C $root rev-parse --git-path git-commit-unselected
+    if (-not [System.IO.Path]::IsPathRooted($statePath)) {
+        $statePath = Join-Path $root $statePath
+    }
+    $statePath = [System.IO.Path]::GetFullPath($statePath)
+
+    if ($Forget) {
+        Remove-Item -LiteralPath $statePath -ErrorAction SilentlyContinue
+        Write-Host 'Cleared remembered unselected files.' -ForegroundColor Cyan
+        return
+    }
+
+    $raw = (& git -C $root status --porcelain=v1 -z --untracked-files=all) -join ''
+    $files = @()
+    if ($raw) {
+        $parts = $raw -split "`0"
+        for ($i = 0; $i -lt $parts.Count; $i++) {
+            $entry = $parts[$i]
+            if (-not $entry) { continue }
+            $files += [pscustomobject]@{
+                Status = $entry.Substring(0, 2)
+                Path   = $entry.Substring(3)
+            }
+            # Renames/copies carry the original path as an extra NUL-terminated field.
+            if ($entry[0] -eq 'R' -or $entry[0] -eq 'C') { $i++ }
+        }
+    }
+
+    if ($files.Count -eq 0) {
+        Write-Host 'Nothing to commit, working tree clean.' -ForegroundColor Yellow
+        return
+    }
+
+    $remembered = @()
+    if (Test-Path -LiteralPath $statePath) {
+        $remembered = @(Get-Content -LiteralPath $statePath | Where-Object { $_ })
+    }
+
+    if ($All) {
+        $selected = @($files | ForEach-Object { $_.Path })
+    }
+    else {
+        $choice = Select-GitCommitFiles -Files $files -Deselected $remembered
+        if ($choice.Cancelled) {
+            Write-Host 'Commit cancelled.' -ForegroundColor Yellow
+            return
+        }
+        $selected = @($choice.Paths)
+    }
+
+    # Remember what was left unselected, pruning paths that no longer changed.
+    $deselected = @($files | Where-Object { $selected -notcontains $_.Path } | ForEach-Object { $_.Path })
+    if ($deselected.Count -gt 0) {
+        Set-Content -LiteralPath $statePath -Value $deselected -Encoding utf8
+    }
+    elseif (Test-Path -LiteralPath $statePath) {
+        Remove-Item -LiteralPath $statePath -ErrorAction SilentlyContinue
+    }
+
+    if ($selected.Count -eq 0) {
+        Write-Host 'No files selected, nothing to commit.' -ForegroundColor Yellow
+        return
+    }
+
+    # Make the index contain exactly the selected files.
+    $toUnstage = @($files | Where-Object {
+            $deselected -contains $_.Path -and $_.Status.Substring(0, 1) -notin @(' ', '?')
+        } | ForEach-Object { $_.Path })
+    if ($toUnstage.Count -gt 0) {
+        & git --literal-pathspecs -C $root restore --staged -- $toUnstage 2>$null | Out-Null
+    }
+
+    & git --literal-pathspecs -C $root add -A -- $selected
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host 'Failed to stage the selected files.' -ForegroundColor Red
+        return
+    }
+
+    if (-not $Message) {
+        $diff = (& git -C $root diff --cached --no-color) -join "`n"
+        $Message = Get-GitGeneratedMessage -Diff $diff
+        if (-not $Message) {
+            $Message = Read-Host -Prompt 'Commit message'
+        }
+        if (-not $Message) {
+            Write-Host 'Aborting commit: empty message' -ForegroundColor Yellow
+            return
+        }
+    }
+
+    & git -C $root commit -m $Message
+}
 New-Alias -Name gc -Value Get-GitCommit -Force -Option AllScope
 
 <#
@@ -56,111 +382,8 @@ function Get-GitCommitAll {
     & git add --all
 
     if (-not $Message -or $Message -eq "") {
-        $apiKey = $env:GEMINI_API_KEY
-        if ($apiKey) { $apiKey = $apiKey.Trim() }
-        if ($apiKey) {
-            # Capture what will be committed (-a stages all tracked changes)
-            $diff = & git diff HEAD 2>$null
-            if (-not $diff) { $diff = & git diff --cached 2>$null }
-
-            if ($diff) {
-                # Truncate to avoid exceeding token limits
-                $maxChars = 8000
-                if ($diff.Length -gt $maxChars) {
-                    $diff = $diff.Substring(0, $maxChars) + "`n... (diff truncated)"
-                }
-
-                Write-Host "Generating commit message..." -ForegroundColor Cyan
-                try {
-                    $prompt = @"
-Generate a single git commit message in conventional commit format for the following diff.
-Format: type(scope): short description
-Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build
-- The scope is optional; omit it if not clearly applicable.
-- Keep the description under 72 characters total.
-- Output only the commit message line, nothing else.
-
-$diff
-"@
-                    $body = @{
-                        contents         = @(
-                            @{
-                                parts = @(
-                                    @{ text = $prompt }
-                                )
-                            }
-                        )
-                        generationConfig = @{
-                            temperature     = 0.2
-                            maxOutputTokens = 100
-                        }
-                    } | ConvertTo-Json -Depth 6
-
-                    # gemini-flash-latest is a moving alias that is frequently
-                    # overloaded (503); pin stable models and fall back when needed.
-                    $models = @('gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-flash-lite-latest')
-                    if ($env:GEMINI_MODEL) { $models = @($env:GEMINI_MODEL) + $models | Select-Object -Unique }
-
-                    $response = $null
-                    foreach ($model in $models) {
-                        for ($attempt = 1; $attempt -le 2; $attempt++) {
-                            try {
-                                $response = Invoke-RestMethod `
-                                    -Uri "https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent" `
-                                    -Method Post `
-                                    -Headers @{ "X-goog-api-key" = $apiKey } `
-                                    -ContentType "application/json" `
-                                    -Body $body `
-                                    -TimeoutSec 15
-                                break
-                            }
-                            catch {
-                                $status = if ($_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 0 }
-                                $retryable = $status -eq 0 -or $status -in 429, 500, 502, 503, 504
-                                if (-not $retryable) { throw }
-                                if ($attempt -lt 2) {
-                                    Start-Sleep -Seconds 2
-                                    continue
-                                }
-                                break   # fall back to the next model
-                            }
-                        }
-                        if ($response) { break }
-                    }
-
-                    if (-not $response) {
-                        throw "All Gemini models are currently unavailable. Try again shortly."
-                    }
-
-                    $generated = $response.candidates[0].content.parts[0].text.Trim()
-                    if ($generated) {
-                        $generated = ($generated -split "`r?`n" | Where-Object { $_ -and $_.Trim() -ne "" } | Select-Object -First 1).Trim()
-                        $generated = $generated -replace '^[`"''\s]+|[`"''\s]+$',''
-                    }
-                    Write-Host "Suggested : $generated" -ForegroundColor Green
-                    $confirm = Read-Host "Accept? [Y=yes (default) / E=edit / N=enter manually]"
-
-                    switch -Regex ($confirm.Trim().ToLower()) {
-                        '^$|^y' { $Message = $generated }
-                        '^e'    {
-                            Write-Host "Editing (clear and retype, or press Enter to keep):" -ForegroundColor Cyan
-                            Write-Host "  $generated" -ForegroundColor DarkGray
-                            $edited = Read-Host -Prompt "Commit message"
-                            $Message = if ($edited) { $edited } else { $generated }
-                        }
-                        default { <# fall through to manual prompt below #> }
-                    }
-                }
-                catch {
-                    if ($_.Exception.Response -and [int]$_.Exception.Response.StatusCode -eq 401) {
-                        Write-Host "AI generation failed: 401 Unauthorized. Check `$env:GEMINI_API_KEY and API key restrictions." -ForegroundColor Yellow
-                    }
-                    else {
-                        Write-Host "AI generation failed: $($_.Exception.Message)" -ForegroundColor Yellow
-                    }
-                }
-            }
-        }
+        $diff = (& git diff --cached --no-color) -join "`n"
+        $Message = Get-GitGeneratedMessage -Diff $diff
 
         if (-not $Message -or $Message -eq "") {
             $Message = Read-Host -Prompt "Commit message"

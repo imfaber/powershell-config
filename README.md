@@ -31,7 +31,7 @@ This repository contains a customized PowerShell configuration with enhanced fun
 | `gs` | `git status -sb` | Short status with branch info |
 | `ga` | `git add` | Stage files |
 | `gaa` | `git add --all` | Stage all changes |
-| `gc` | `git commit -ev` | Commit with editor |
+| `gc` | `Get-GitCommit` | Select files to commit (remembers unselected ones) |
 | `gci` | `git commit -ev --interactive` | Interactive commit |
 | `gca` | `git commit -aev` | Commit all with editor |
 | `gps` | `git push` | Push changes |
