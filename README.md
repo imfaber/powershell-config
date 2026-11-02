@@ -46,6 +46,7 @@ This repository contains a customized PowerShell configuration with enhanced fun
 | `gm` | `git merge` | Merge branches |
 | `gr` | `git remote -v` | Show remotes |
 | `grsh` | `Get-GitResetHard` | Select files to discard (remembers unselected ones) |
+| `gwipe` | `Get-GitWipe` | Discard selected tracked and untracked files (remembers unselected ones) |
 | `gd` | `git diff` | Show differences |
 | `glog` | Formatted git log | Beautiful git history tree |
 

@@ -240,6 +240,56 @@ function Select-GitChangedFiles {
     }
 }
 
+function Get-GitWorkingTreeChanges {
+    param([Parameter(Mandatory)][string]$Root)
+
+    $raw = (& git -C $Root status --porcelain=v1 -z --untracked-files=all) -join ''
+    $items = @()
+    if ($raw) {
+        $parts = $raw -split "`0"
+        for ($i = 0; $i -lt $parts.Count; $i++) {
+            $entry = $parts[$i]
+            if (-not $entry) { continue }
+            $status = $entry.Substring(0, 2)
+            $path = $entry.Substring(3)
+            $originalPath = $null
+            # Renames/copies carry the original path as an extra NUL-terminated field.
+            if ($entry[0] -eq 'R' -or $entry[0] -eq 'C') {
+                $originalPath = $parts[++$i]
+            }
+            $items += [pscustomobject]@{
+                Status       = $status
+                Path         = $path
+                OriginalPath = $originalPath
+            }
+        }
+    }
+    return $items
+}
+
+function Get-GitRememberedSelection {
+    param([Parameter(Mandatory)][string]$StatePath)
+
+    if (Test-Path -LiteralPath $StatePath) {
+        return @(Get-Content -LiteralPath $StatePath | Where-Object { $_ })
+    }
+    return @()
+}
+
+function Set-GitRememberedSelection {
+    param(
+        [Parameter(Mandatory)][string]$StatePath,
+        [string[]]$Deselected = @()
+    )
+
+    if ($Deselected.Count -gt 0) {
+        Set-Content -LiteralPath $StatePath -Value $Deselected -Encoding utf8
+    }
+    elseif (Test-Path -LiteralPath $StatePath) {
+        Remove-Item -LiteralPath $StatePath -ErrorAction SilentlyContinue
+    }
+}
+
 <#
 .SYNOPSIS
     Commits only the files you select, remembering files you leave unselected.
@@ -658,36 +708,14 @@ function Get-GitResetHard {
         return
     }
 
-    $raw = (& git -C $root status --porcelain=v1 -z --untracked-files=all) -join ''
-    $files = @()
-    if ($raw) {
-        $parts = $raw -split "`0"
-        for ($i = 0; $i -lt $parts.Count; $i++) {
-            $entry = $parts[$i]
-            if (-not $entry) { continue }
-            $status = $entry.Substring(0, 2)
-            $path = $entry.Substring(3)
-            $originalPath = $null
-            if ($entry[0] -eq 'R' -or $entry[0] -eq 'C') {
-                $originalPath = $parts[++$i]
-            }
-            $files += [pscustomobject]@{
-                Status       = $status
-                Path         = $path
-                OriginalPath = $originalPath
-            }
-        }
-    }
+    $files = @(Get-GitWorkingTreeChanges -Root $root)
 
     if ($files.Count -eq 0) {
         Write-Host 'Nothing to discard, working tree clean.' -ForegroundColor Yellow
         return
     }
 
-    $remembered = @()
-    if (Test-Path -LiteralPath $statePath) {
-        $remembered = @(Get-Content -LiteralPath $statePath | Where-Object { $_ })
-    }
+    $remembered = @(Get-GitRememberedSelection -StatePath $statePath)
 
     $choice = Select-GitChangedFiles -Files $files -Deselected $remembered -Title 'Select files to discard:' -ConfirmLabel 'discard'
     if ($choice.Cancelled) {
@@ -698,12 +726,7 @@ function Get-GitResetHard {
 
     # Remember what was left unselected, pruning paths that no longer changed.
     $deselected = @($files | Where-Object { $selected -notcontains $_.Path } | ForEach-Object { $_.Path })
-    if ($deselected.Count -gt 0) {
-        Set-Content -LiteralPath $statePath -Value $deselected -Encoding utf8
-    }
-    elseif (Test-Path -LiteralPath $statePath) {
-        Remove-Item -LiteralPath $statePath -ErrorAction SilentlyContinue
-    }
+    Set-GitRememberedSelection -StatePath $statePath -Deselected $deselected
 
     if ($selected.Count -eq 0) {
         Write-Host 'No files selected, nothing to discard.' -ForegroundColor Yellow
@@ -738,6 +761,118 @@ function Get-GitResetHard {
     }
 }
 New-Alias -Name grsh -Value Get-GitResetHard -Force -Option AllScope
+
+<#
+.SYNOPSIS
+    Discards selected changes whether tracked or untracked (git reset --hard + git clean -df).
+    Files you leave unselected are remembered per repository.
+    WARNING: discarding is irreversible, including untracked files.
+.EXAMPLE
+    gwipe             # pick files to discard, restoring tracked files and deleting untracked ones
+    gwipe HEAD~1      # same, restoring tracked files to HEAD~1
+    gwipe -All        # discard everything: git reset --hard + git clean -df
+    gwipe -Forget     # clear the remembered unselected files
+#>
+function Get-GitWipe {
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0)]
+        [string]$Commit = 'HEAD',
+        [switch]$All,
+        [switch]$Forget,
+        [switch]$Force
+    )
+
+    $root = & git rev-parse --show-toplevel 2>$null
+    if ($LASTEXITCODE -ne 0 -or -not $root) {
+        Write-Host 'Not inside a git repository.' -ForegroundColor Yellow
+        return
+    }
+
+    $statePath = & git -C $root rev-parse --git-path git-wipe-unselected
+    if (-not [System.IO.Path]::IsPathRooted($statePath)) {
+        $statePath = Join-Path $root $statePath
+    }
+    $statePath = [System.IO.Path]::GetFullPath($statePath)
+
+    if ($Forget) {
+        Remove-Item -LiteralPath $statePath -ErrorAction SilentlyContinue
+        Write-Host 'Cleared remembered unselected files.' -ForegroundColor Cyan
+        return
+    }
+
+    & git -C $root rev-parse --verify --quiet "$Commit^{commit}" | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Unknown commit: $Commit" -ForegroundColor Red
+        return
+    }
+
+    if ($All) {
+        if (-not $Force) {
+            $answer = Read-Host "Discard ALL changes, including untracked files, and restore to $Commit? [y/N]"
+            if ($answer.Trim().ToLower() -notin @('y', 'yes')) {
+                Write-Host 'Discard cancelled.' -ForegroundColor Yellow
+                return
+            }
+        }
+        & git -C $root reset --hard $Commit
+        if ($LASTEXITCODE -ne 0) { return }
+        & git -C $root clean -f -d
+        return
+    }
+
+    $files = @(Get-GitWorkingTreeChanges -Root $root)
+    if ($files.Count -eq 0) {
+        Write-Host 'Nothing to discard, working tree clean.' -ForegroundColor Yellow
+        return
+    }
+
+    $remembered = @(Get-GitRememberedSelection -StatePath $statePath)
+
+    $choice = Select-GitChangedFiles -Files $files -Deselected $remembered -Title 'Select files to discard:' -ConfirmLabel 'discard'
+    if ($choice.Cancelled) {
+        Write-Host 'Discard cancelled.' -ForegroundColor Yellow
+        return
+    }
+    $selected = @($choice.Paths)
+
+    # Remember what was left unselected, pruning paths that no longer changed.
+    $deselected = @($files | Where-Object { $selected -notcontains $_.Path } | ForEach-Object { $_.Path })
+    Set-GitRememberedSelection -StatePath $statePath -Deselected $deselected
+
+    if ($selected.Count -eq 0) {
+        Write-Host 'No files selected, nothing to discard.' -ForegroundColor Yellow
+        return
+    }
+
+    if (-not $Force) {
+        $answer = Read-Host "Discard changes in $($selected.Count) file(s), including untracked ones, and restore them to $Commit? [y/N]"
+        if ($answer.Trim().ToLower() -notin @('y', 'yes')) {
+            Write-Host 'Discard cancelled.' -ForegroundColor Yellow
+            return
+        }
+    }
+
+    # Untracked files have no entry in the target commit, so delete them.
+    $selectedEntries = @($files | Where-Object { $selected -contains $_.Path })
+    $untracked = @($selectedEntries | Where-Object { $_.Status -eq '??' } | ForEach-Object { $_.Path })
+    if ($untracked.Count -gt 0) {
+        & git --literal-pathspecs -C $root clean -f -d -- $untracked
+    }
+
+    # Restore tracked files in both index and working tree. Renames need both sides.
+    $tracked = @($selectedEntries | Where-Object { $_.Status -ne '??' } | ForEach-Object {
+            $_.Path
+            if ($_.Status[0] -eq 'R' -and $_.OriginalPath) { $_.OriginalPath }
+        })
+    if ($tracked.Count -gt 0) {
+        & git --literal-pathspecs -C $root restore --source=$Commit --staged --worktree -- $tracked
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host 'Failed to discard the selected files.' -ForegroundColor Red
+        }
+    }
+}
+New-Alias -Name gwipe -Value Get-GitWipe -Force -Option AllScope
 
 <#
 .SYNOPSIS
