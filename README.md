@@ -16,6 +16,7 @@ This repository contains a customized PowerShell configuration with enhanced fun
 - `ll` → `ls` - Quick directory listing
 - `rmrf` → `rm -Force -Recurse` - Force remove files/directories
 - `grep` → `findstr` - Text search
+- `touch` → create empty files (or update timestamps) like Unix `touch`
 - `vim`, `v` → `nvim` - Neovim editor shortcuts
 
 #### .NET Development
