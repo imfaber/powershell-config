@@ -62,7 +62,7 @@ $Diff
 
         # gemini-flash-latest is a moving alias that is frequently
         # overloaded (503); pin stable models and fall back when needed.
-        $models = @('gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-flash-lite-latest')
+        $models = @('gemini-3.5-flash', 'gemini-flash-lite-latest', 'gemini-3.1-flash-lite')
         if ($env:GEMINI_MODEL) { $models = @($env:GEMINI_MODEL) + $models | Select-Object -Unique }
 
         $response = $null
