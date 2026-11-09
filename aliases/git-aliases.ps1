@@ -56,7 +56,7 @@ $Diff
             )
             generationConfig = @{
                 temperature     = 0.2
-                maxOutputTokens = 100
+                maxOutputTokens = 512
             }
         } | ConvertTo-Json -Depth 6
 
@@ -96,11 +96,31 @@ $Diff
             throw "All Gemini models are currently unavailable. Try again shortly."
         }
 
-        $generated = $response.candidates[0].content.parts[0].text.Trim()
+        $finishReason = $response.candidates[0].finishReason
+
+        # Gemini may split the answer across several parts (and may emit
+        # separate "thought" parts). Join every non-thought text part.
+        $parts = @($response.candidates[0].content.parts)
+        $generated = (($parts | Where-Object { -not $_.thought -and $_.text } | ForEach-Object { $_.text }) -join '').Trim()
         if (-not $generated) { return $null }
 
-        $generated = ($generated -split "`r?`n" | Where-Object { $_ -and $_.Trim() -ne "" } | Select-Object -First 1).Trim()
-        $generated = $generated -replace '^[`"''\s]+|[`"''\s]+$', ''
+        $lines = @($generated -split "`r?`n" | Where-Object { $_ -and $_.Trim() -ne "" })
+        if ($lines.Count -gt 1 -and $lines[0].TrimEnd().EndsWith(':')) {
+            # The model put the description on the next line (e.g. "docs:").
+            $generated = ($lines[0].TrimEnd() + ' ' + $lines[1].Trim())
+        }
+        else {
+            $generated = $lines | Select-Object -First 1
+        }
+        $generated = ($generated -replace '^[`"''\s]+|[`"''\s]+$', '').Trim()
+
+        if ($finishReason -eq 'MAX_TOKENS') {
+            Write-Host "Warning: model output was truncated (MAX_TOKENS); message may be incomplete." -ForegroundColor Yellow
+        }
+        if (-not $generated -or $generated.EndsWith(':')) {
+            Write-Host "Generated message looks incomplete; falling back to manual entry." -ForegroundColor Yellow
+            return $null
+        }
 
         Write-Host "Suggested : $generated" -ForegroundColor Green
         $confirm = Read-Host "Accept? [Y=yes (default) / E=edit / N=enter manually]"
